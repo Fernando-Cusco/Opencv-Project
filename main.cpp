@@ -24,7 +24,7 @@ int main(int argc, char *argv[]){
         mode = (mode!=1 && mode!=2)?1:mode;
     }
     HuMomentsExtractor *huM = new HuMomentsExtractor();
-    huM->setOperationMode(1);
+    huM->setOperationMode(2);
     huM->capture();
 
 

@@ -29,10 +29,7 @@ vector<double> HuMomentsExtractor::extractHuMoments(Mat imageO) {
     vector<double> huMomentsV;
 
     cvtColor(imageO, imageLab, COLOR_BGR2Lab);
-//    imshow("lab", imageLab);
 
-    inRange(imageLab, Scalar(lMin, aMin, bMin), Scalar(lMax, aMax, bMax), imageThreshold);
-//    imshow("threshold", imageThreshold);
 
     Mat imageClahe;
     Mat dst;
@@ -40,16 +37,16 @@ vector<double> HuMomentsExtractor::extractHuMoments(Mat imageO) {
     split(imageLab, canales);
     Ptr<CLAHE> clahe = createCLAHE();
     clahe->setClipLimit(4);
-
     clahe->apply(canales[0], dst);
     dst.copyTo(canales[0]);
-
     merge(canales, imageLab);
 
+    inRange(imageLab, Scalar(lMin, aMin, bMin), Scalar(lMax, aMax, bMax), imageThreshold);
     cvtColor(imageLab, imageClahe, COLOR_Lab2BGR);
     imshow("video-clahe", imageClahe);
 
     _moments = moments(imageThreshold, true);
+//    _moments = moments(canales[0], true);
     HuMoments(_moments, huMoments);
 
     for (int i = 0; i < 7; i++) {
@@ -71,12 +68,28 @@ HuMomentsExtractor::extractHuMoments(Mat imageO, int lmin, int amin, int bmin, i
     vector<double> huMomentsV;
 
     cvtColor(imageO, imageLab, COLOR_BGR2Lab);
-    imshow("lab", imageLab);
+
+
+
+
+    Mat imageClahe;
+    Mat dst;
+    vector<Mat> canales(3);
+    split(imageLab, canales);
+    Ptr<CLAHE> clahe = createCLAHE();
+    clahe->setClipLimit(4);
+    clahe->apply(canales[0], dst);
+    dst.copyTo(canales[0]);
+    merge(canales, imageLab);
 
     inRange(imageLab, Scalar(lmin, amin, bmin), Scalar(lmax, amax, bmax), imageThreshold);
-    imshow("threshold", imageThreshold);
+    cvtColor(imageLab, imageClahe, COLOR_Lab2BGR);
 
+//    imshow("video-clahe", imageClahe);
+//    imshow("lab", imageLab);
+//    imshow("threshold", imageThreshold);
     _moments = moments(imageThreshold, true);
+//    _moments = moments(canales[0], true);
     HuMoments(_moments, huMoments);
 
     for (int i = 0; i < 7; i++) {
@@ -169,14 +182,15 @@ void HuMomentsExtractor::capture() {
             if (this->operationMode == 1) { // In this mode you can use the trackbars to determine the LAB segmentation range
                 huMoments = this->extractHuMoments(frame);
             } if (this->operationMode == 2) { // In this mode you can use test the values selected to perform the segmentation and Hu Moments extraction
-                huMoments = this->extractHuMoments(frame, 0, 0, 0, 255, 106, 255);
+//                huMoments = this->extractHuMoments(frame, 0, 0, 0, 255, 106, 255);
+                huMoments = this->extractHuMoments(frame, 100, 0, 1, 255, 109, 255);
                 indexVerde = this->euclideanDistance(huMoments, 2);
                 if (indexVerde != -1) {
                     cout << "JoyStick: " << indexVerde << endl;
                     putText(frame, "JoyStick", Point(huMoments[7], huMoments[8]), FONT_HERSHEY_DUPLEX, 1,
                             Scalar(0, 10, 143), 2);
                 } else {
-                    huMoments = this->extractHuMoments(frame, 0, 162, 0, 255, 255, 255);
+                    huMoments = this->extractHuMoments(frame, 111, 164, 0, 255, 255, 255);
                     indexAmarillo = this->euclideanDistance(huMoments, 1);
                     if (indexAmarillo != -1) {
                         cout << "Rojo: " << indexAmarillo << endl;
