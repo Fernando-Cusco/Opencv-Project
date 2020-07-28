@@ -150,6 +150,33 @@ HuMomentsExtractor.cpp.s:
 	$(MAKE) -f CMakeFiles/ProyectoIA.dir/build.make CMakeFiles/ProyectoIA.dir/HuMomentsExtractor.cpp.s
 .PHONY : HuMomentsExtractor.cpp.s
 
+SurfExtractor.o: SurfExtractor.cpp.o
+
+.PHONY : SurfExtractor.o
+
+# target to build an object file
+SurfExtractor.cpp.o:
+	$(MAKE) -f CMakeFiles/ProyectoIA.dir/build.make CMakeFiles/ProyectoIA.dir/SurfExtractor.cpp.o
+.PHONY : SurfExtractor.cpp.o
+
+SurfExtractor.i: SurfExtractor.cpp.i
+
+.PHONY : SurfExtractor.i
+
+# target to preprocess a source file
+SurfExtractor.cpp.i:
+	$(MAKE) -f CMakeFiles/ProyectoIA.dir/build.make CMakeFiles/ProyectoIA.dir/SurfExtractor.cpp.i
+.PHONY : SurfExtractor.cpp.i
+
+SurfExtractor.s: SurfExtractor.cpp.s
+
+.PHONY : SurfExtractor.s
+
+# target to generate assembly for a file
+SurfExtractor.cpp.s:
+	$(MAKE) -f CMakeFiles/ProyectoIA.dir/build.make CMakeFiles/ProyectoIA.dir/SurfExtractor.cpp.s
+.PHONY : SurfExtractor.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -189,6 +216,9 @@ help:
 	@echo "... HuMomentsExtractor.o"
 	@echo "... HuMomentsExtractor.i"
 	@echo "... HuMomentsExtractor.s"
+	@echo "... SurfExtractor.o"
+	@echo "... SurfExtractor.i"
+	@echo "... SurfExtractor.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

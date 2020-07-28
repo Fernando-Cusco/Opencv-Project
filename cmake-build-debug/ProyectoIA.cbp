@@ -88,6 +88,12 @@
 		<Unit filename="/Users/fernandocuscomejia/Documents/Decimo/IA2/Vision-Computador/Opencv/ProyectoIA/HuMomentsExtractor.hpp">
 			<Option target="ProyectoIA"/>
 		</Unit>
+		<Unit filename="/Users/fernandocuscomejia/Documents/Decimo/IA2/Vision-Computador/Opencv/ProyectoIA/SurfExtractor.cpp">
+			<Option target="ProyectoIA"/>
+		</Unit>
+		<Unit filename="/Users/fernandocuscomejia/Documents/Decimo/IA2/Vision-Computador/Opencv/ProyectoIA/SurfExtractor.hpp">
+			<Option target="ProyectoIA"/>
+		</Unit>
 		<Unit filename="/Users/fernandocuscomejia/Documents/Decimo/IA2/Vision-Computador/Opencv/ProyectoIA/main.cpp">
 			<Option target="ProyectoIA"/>
 		</Unit>

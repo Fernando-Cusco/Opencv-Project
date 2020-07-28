@@ -6,11 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/Users/fernandocuscomejia/Documents/Decimo/IA2/Vision-Computador/Opencv/ProyectoIA/HuMomentsExtractor.cpp
-HuMomentsExtractor.hpp
-/Users/fernandocuscomejia/Documents/Decimo/IA2/Vision-Computador/Opencv/ProyectoIA/HuMomentsExtractor.hpp
+/Users/fernandocuscomejia/Documents/Decimo/IA2/Vision-Computador/Opencv/ProyectoIA/SurfExtractor.cpp
+SurfExtractor.hpp
+/Users/fernandocuscomejia/Documents/Decimo/IA2/Vision-Computador/Opencv/ProyectoIA/SurfExtractor.hpp
 
-/Users/fernandocuscomejia/Documents/Decimo/IA2/Vision-Computador/Opencv/ProyectoIA/HuMomentsExtractor.hpp
+/Users/fernandocuscomejia/Documents/Decimo/IA2/Vision-Computador/Opencv/ProyectoIA/SurfExtractor.hpp
 iostream
 -
 cstdlib
@@ -38,6 +38,8 @@ opencv2/video/video.hpp
 opencv2/videoio/videoio.hpp
 -
 opencv2/xfeatures2d/nonfree.hpp
+-
+opencv2/xfeatures2d.hpp
 -
 math.h
 -
@@ -437,6 +439,12 @@ opencv2/core.hpp
 /usr/local/Cellar/opencv/4.3.0_4/include/opencv4/opencv2/videoio/videoio.hpp
 opencv2/videoio.hpp
 /usr/local/Cellar/opencv/4.3.0_4/include/opencv4/opencv2/videoio/opencv2/videoio.hpp
+
+/usr/local/Cellar/opencv/4.3.0_4/include/opencv4/opencv2/xfeatures2d.hpp
+opencv2/features2d.hpp
+/usr/local/Cellar/opencv/4.3.0_4/include/opencv4/opencv2/opencv2/features2d.hpp
+opencv2/xfeatures2d/nonfree.hpp
+/usr/local/Cellar/opencv/4.3.0_4/include/opencv4/opencv2/opencv2/xfeatures2d/nonfree.hpp
 
 /usr/local/Cellar/opencv/4.3.0_4/include/opencv4/opencv2/xfeatures2d/nonfree.hpp
 opencv2/features2d.hpp

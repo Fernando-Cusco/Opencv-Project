@@ -1,8 +1,5 @@
 #include "HuMomentsExtractor.hpp"
-
-
-
-
+#include "SurfExtractor.hpp"
 void changeMode(int v, void *p) {
     cout << v << endl;
 }
@@ -15,6 +12,7 @@ HuMomentsExtractor::HuMomentsExtractor(string outDir) {
     this->aMin = 255;
     this->bMin = 255;
     this->lMin = 255;
+
 
 }
 
@@ -149,7 +147,7 @@ void HuMomentsExtractor::capture() {
         int indexVerde = -1;
         int indexAmarillo = -1;
         int indexTomate = -1;
-
+        SurfExtractor *surf = new SurfExtractor();
         while (true) {
             video >> frame;
 //            flip(frame, frame, 1);
@@ -185,6 +183,17 @@ void HuMomentsExtractor::capture() {
             }
             if(this->operationMode == 3) {
                 cout << "Modo 3" << endl;
+
+
+                surf->convertColorToGrayScale();
+                cvtColor(frame, surf->captura, COLOR_BGR2GRAY);
+                surf->detectAndCompute(surf->captura, surf->iphoneGris);
+                surf->detectAndCompute(surf->captura, surf->audifonosGris);
+                surf->detectAndCompute(surf->captura, surf->tarjetaGris);
+                surf->makeMatches();
+                surf->paintMatches(frame, surf->tarjeta);
+
+
             }
             imshow("video", frame);
 
@@ -194,5 +203,6 @@ void HuMomentsExtractor::capture() {
                 break;
         }
     }
+
     destroyAllWindows();
 }
