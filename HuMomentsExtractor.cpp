@@ -171,7 +171,7 @@ void HuMomentsExtractor::capture() {
                                 FONT_HERSHEY_DUPLEX, 1, Scalar(143, 10, 0), 2);
                     } else {
                         //0-255-136-255-158-255
-                        huMoments = this->extractHuMoments(frame, 0, 146, 0, 255, 255, 88);
+                        huMoments = this->extractHuMoments(frame, 0, 0, 0, 207, 173, 102);
                         indexTomate = this->euclideanDistance(huMoments, 0);
                         if (indexTomate != -1) {
                             cout << "Morado: " << indexTomate << endl;
