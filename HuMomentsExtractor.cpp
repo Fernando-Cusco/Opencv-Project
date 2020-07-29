@@ -150,7 +150,6 @@ void HuMomentsExtractor::capture() {
         SurfExtractor *surf = new SurfExtractor();
         while (true) {
             video >> frame;
-//            flip(frame, frame, 1);
             resize(frame, frame, Size(640, 480));
 
             if (this->operationMode == 1) { // In this mode you can use the trackbars to determine the LAB segmentation range
@@ -183,8 +182,6 @@ void HuMomentsExtractor::capture() {
             }
             if(this->operationMode == 3) {
                 cout << "Modo 3" << endl;
-
-
                 surf->convertColorToGrayScale();
                 cvtColor(frame, surf->captura, COLOR_BGR2GRAY);
                 surf->detectAndCompute(surf->captura, surf->iphoneGris);
