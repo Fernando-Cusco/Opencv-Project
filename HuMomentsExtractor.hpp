@@ -32,9 +32,12 @@ private:
 
     Mat imageThreshold;
     Mat imageLab;
+    vector<double> huMomentsPurple;
+    vector<double> huMomentsRed;
+    vector<double> huMomentsGreen;
 
     // Hu Moments previously extracted for morado, rojo, and verde colors:
-    double basehumoments[3][7] = {{0.164562,0.00150246,2.74986e-05,4.72789e-07,1.46825e-12,1.10604e-08,-8.66233e-13},
+    double basehumoments[3][7] = {{0.231956,0.025414,0.000159526,1.39677e-05,-6.55154e-10,-2.21141e-06,7.40665e-11},
                                   {0.245572,0.0192027,0.00244654,0.000109615,-3.13255e-08,-9.91094e-06,4.73388e-08},
                                   {0.231082,0.0157393,5.06301e-05,1.18537e-05,2.09701e-10,9.66472e-07,-2.00879e-10}};
 
@@ -61,6 +64,7 @@ private:
 
 public:
     HuMomentsExtractor(string = "fichero.txt");
+
     vector<double> extractHuMoments(Mat);
     vector<double> extractHuMoments(Mat,int,int,int,int,int,int);
     void capture();

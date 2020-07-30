@@ -44,10 +44,6 @@ opencv2/xfeatures2d/nonfree.hpp
 math.h
 -
 
-/Users/fernandocuscomejia/Documents/Decimo/IA2/Vision-Computador/Opencv/ProyectoIA/SurfExtractor.cpp
-SurfExtractor.hpp
-/Users/fernandocuscomejia/Documents/Decimo/IA2/Vision-Computador/Opencv/ProyectoIA/SurfExtractor.hpp
-
 /Users/fernandocuscomejia/Documents/Decimo/IA2/Vision-Computador/Opencv/ProyectoIA/SurfExtractor.hpp
 iostream
 -
@@ -81,26 +77,6 @@ opencv2/xfeatures2d.hpp
 -
 math.h
 -
-
-/Users/fernandocuscomejia/Documents/Decimo/IA2/Vision-Computador/Opencv/ProyectoIA/main.cpp
-iostream
--
-cstdlib
--
-opencv2/core/core.hpp
--
-opencv2/highgui/highgui.hpp
--
-opencv2/imgproc/imgproc.hpp
--
-opencv2/imgcodecs/imgcodecs.hpp
--
-opencv2/video/video.hpp
--
-opencv2/videoio/videoio.hpp
--
-HuMomentsExtractor.hpp
-/Users/fernandocuscomejia/Documents/Decimo/IA2/Vision-Computador/Opencv/ProyectoIA/HuMomentsExtractor.hpp
 
 /usr/local/Cellar/opencv/4.3.0_4/include/opencv4/opencv2/core.hpp
 opencv2/core/cvdef.h

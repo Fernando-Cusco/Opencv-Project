@@ -37,23 +37,36 @@ public:
     Mat captura;
 
     Ptr<Feature2D> surf = xfeatures2d::SURF::create();
-    vector<KeyPoint> points1;
-    vector<KeyPoint> points2;
+    vector<KeyPoint> pointsVideo;  //para el video
+    vector<KeyPoint> pointsTarjeta;
+    vector<KeyPoint> pointsAudifonos;
+    vector<KeyPoint> pointsIphone;
 
-    Mat descriptors1;
-    Mat descriptors2;
+    Mat descriptorsVideo;           //para el video
 
-    BFMatcher matcher;
+    Mat descriptorsTarjeta;
+    Mat descriptorsAudifonos;
+    Mat descriptorsIphone;
+
+    BFMatcher matcherTarjeta;
+    BFMatcher matcherAudifonos;
+    BFMatcher matcherIphone;
+
     Mat img_matches;
-    vector<vector<DMatch>> matches;
-    vector<DMatch> okMatches;
+    vector<vector<DMatch>> matchesTarjeta;
+    vector<vector<DMatch>> matchesAudifonos;
+    vector<vector<DMatch>> matchesIphone;
+
+    vector<DMatch> okMatchesTarjeta;
+    vector<DMatch> okMatchesAudifonos;
+    vector<DMatch> okMatchesIphone;
 
 
 
     SurfExtractor();
     void readImage();
     void convertColorToGrayScale();
-    void detectAndCompute(Mat, Mat);
+    void detectAndCompute(Mat);
     void makeMatches();
     void paintMatches(Mat, Mat);
 

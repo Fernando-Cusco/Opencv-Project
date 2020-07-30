@@ -20,29 +20,50 @@ void SurfExtractor::convertColorToGrayScale() {
     cvtColor(tarjeta, tarjetaGris, COLOR_BGR2GRAY);
 }
 
-void SurfExtractor::detectAndCompute(Mat grisVideo, Mat grisObjeto) {
-    surf->detect(grisObjeto, points1);
-    surf->detect(grisVideo, points2);
+void SurfExtractor::detectAndCompute(Mat grisVideo) {
+    surf->detect(tarjetaGris, pointsTarjeta);
+    surf->detect(audifonosGris, pointsAudifonos);
+    surf->detect(iphoneGris, pointsIphone);
 
-    surf->compute(grisVideo, points1, descriptors1);
-    surf->compute(grisObjeto, points2, descriptors2);
+    surf->detect(grisVideo, pointsVideo);//para el video
+
+    surf->compute(grisVideo, pointsVideo, descriptorsVideo);
+    surf->compute(tarjetaGris, pointsTarjeta, descriptorsTarjeta);
+    surf->compute(audifonosGris, pointsAudifonos, descriptorsAudifonos);
+    surf->compute(iphoneGris, pointsIphone, descriptorsIphone);
+
 }
 
 void SurfExtractor::makeMatches() {
-    matcher.knnMatch(descriptors1, descriptors2, matches, 2);
+    matcherTarjeta.knnMatch(descriptorsTarjeta, descriptorsVideo, matchesTarjeta, 2);
+    matcherAudifonos.knnMatch(descriptorsAudifonos, descriptorsVideo, matchesAudifonos, 2);
+    matcherIphone.knnMatch(descriptorsIphone, descriptorsVideo, matchesIphone, 2);
     float ratio = 0.8f;
-    for (int i = 0; i < matches.size(); ++i) {
-        if (matches[i][0].distance < ratio * matches[i][1].distance) {
-            okMatches.push_back(matches[i][0]);
+    for (int i = 0; i < matchesTarjeta.size(); ++i) {
+        if (matchesTarjeta[i][0].distance < ratio * matchesTarjeta[i][1].distance) {
+            okMatchesTarjeta.push_back(matchesTarjeta[i][0]);
         }
     }
+    for (int i = 0; i < matchesAudifonos.size(); ++i) {
+        if (matchesAudifonos[i][0].distance < ratio * matchesAudifonos[i][1].distance) {
+            okMatchesAudifonos.push_back(matchesAudifonos[i][0]);
+        }
+    }
+    for (int i = 0; i < matchesIphone.size(); ++i) {
+        if (matchesIphone[i][0].distance < ratio * matchesIphone[i][1].distance) {
+            okMatchesIphone.push_back(matchesIphone[i][0]);
+        }
+    }
+
+    cout << "Matches: " << okMatchesTarjeta.size() << " - " << okMatchesAudifonos.size() << " - " << okMatchesIphone.size() << endl;
+
 }
 
 void SurfExtractor::paintMatches(Mat video, Mat objeto) {
 //    drawMatches(objeto, points1, video, points2, okMatches, img_matches);
-    drawKeypoints(objeto, points1, objeto);
-    drawKeypoints(video, points2, video);
-    namedWindow("resultado", WINDOW_AUTOSIZE);
+//    drawKeypoints(objeto, points1, objeto);
+//    drawKeypoints(video, points2, video);
+//    namedWindow("resultado", WINDOW_AUTOSIZE);
 //    imshow("resultado", img_matches);
 }
 
