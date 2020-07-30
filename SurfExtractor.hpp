@@ -24,6 +24,7 @@ using namespace cv;
 class SurfExtractor {
 
 public:
+    int estado =  0;
     Mat iphone;
     Mat audifonos;
     Mat tarjeta;
@@ -68,7 +69,8 @@ public:
     void convertColorToGrayScale();
     void detectAndCompute(Mat);
     void makeMatches();
-    void paintMatches(Mat, Mat);
+    void paintMatches(Mat);
+    void clearVectors();
 
 
 };

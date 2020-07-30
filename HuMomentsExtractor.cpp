@@ -209,12 +209,17 @@ void HuMomentsExtractor::capture() {
 
             }
             if (this->operationMode == 3) {
-                cout << "Modo 3" << endl;
-                surf->convertColorToGrayScale();
-                cvtColor(frame, surf->captura, COLOR_BGR2GRAY);
-                surf->detectAndCompute(surf->captura);
-                surf->makeMatches();
-//                surf->paintMatches(frame, surf->tarjeta);
+                if (surf->estado == 0) {
+                    surf->readImage();
+                    surf->convertColorToGrayScale();
+                    surf->estado = 1;
+                } else {
+                    cvtColor(frame, surf->captura, COLOR_BGR2GRAY);
+                    surf->detectAndCompute(surf->captura);
+                    surf->makeMatches();
+                    surf->paintMatches(frame);
+                    surf->clearVectors();
+                }
             }
             imshow("video", frame);
 
