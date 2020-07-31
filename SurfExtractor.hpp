@@ -49,9 +49,9 @@ public:
     Mat descriptorsAudifonos;
     Mat descriptorsIphone;
 
-    BFMatcher matcherTarjeta;
-    BFMatcher matcherAudifonos;
-    BFMatcher matcherIphone;
+    FlannBasedMatcher matcherTarjeta;
+    FlannBasedMatcher matcherAudifonos;
+    FlannBasedMatcher matcherIphone;
 
     Mat img_matches;
     vector<vector<DMatch>> matchesTarjeta;

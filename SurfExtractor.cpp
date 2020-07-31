@@ -6,7 +6,7 @@ SurfExtractor::SurfExtractor() {
 
 void SurfExtractor::readImage() {
     audifonos = imread("audifonos.png");
-    iphone = imread("iphone.png");
+    iphone = imread("iph.png");
     tarjeta = imread("tarjeta.png");
 
 }
@@ -22,34 +22,40 @@ void SurfExtractor::detectAndCompute(Mat grisVideo) {
     surf->detect(tarjetaGris, pointsTarjeta);
     surf->detect(audifonosGris, pointsAudifonos);
     surf->detect(iphoneGris, pointsIphone);
-
-    surf->detect(grisVideo, pointsVideo);//para el video
-
-    surf->compute(grisVideo, pointsVideo, descriptorsVideo);
     surf->compute(tarjetaGris, pointsTarjeta, descriptorsTarjeta);
     surf->compute(audifonosGris, pointsAudifonos, descriptorsAudifonos);
     surf->compute(iphoneGris, pointsIphone, descriptorsIphone);
 
+    surf->detect(grisVideo, pointsVideo);//para el video
+    surf->compute(grisVideo, pointsVideo, descriptorsVideo);
+
+
 }
 
 void SurfExtractor::makeMatches() {
-    matcherTarjeta.knnMatch(descriptorsTarjeta, descriptorsVideo, matchesTarjeta, 4);
-    matcherAudifonos.knnMatch(descriptorsAudifonos, descriptorsVideo, matchesAudifonos, 4);
-    matcherIphone.knnMatch(descriptorsIphone, descriptorsVideo, matchesIphone, 4);
+    matcherTarjeta.knnMatch(descriptorsTarjeta, descriptorsVideo, matchesTarjeta, 2);
+    matcherAudifonos.knnMatch(descriptorsAudifonos, descriptorsVideo, matchesAudifonos, 2);
+    matcherIphone.knnMatch(descriptorsIphone, descriptorsVideo, matchesIphone, 2);
+
     float ratio = 0.8f;
-    for (int i = 0; i < matchesTarjeta.size(); ++i) {
-        if (matchesTarjeta[i][0].distance < ratio * matchesTarjeta[i][1].distance) {
+    for (int i = 0; i < min(descriptorsVideo.rows - 1, (int) matchesTarjeta.size()); ++i) {
+        if ((matchesTarjeta[i][0].distance < ratio * (matchesTarjeta[i][1].distance)) and
+            ((int) matchesTarjeta[i].size() <= 2 and (int) matchesTarjeta[i].size() > 0)) {
             okMatchesTarjeta.push_back(matchesTarjeta[i][0]);
         }
     }
-    for (int i = 0; i < matchesAudifonos.size(); ++i) {
-        if (matchesAudifonos[i][0].distance < ratio * matchesAudifonos[i][1].distance) {
+
+    for (int i = 0; i < min(descriptorsVideo.rows - 1, (int) matchesAudifonos.size()); ++i) {
+        if ((matchesAudifonos[i][0].distance < ratio * (matchesAudifonos[i][1].distance)) and
+            ((int) matchesAudifonos[i].size() <= 2 and (int) matchesAudifonos[i].size() > 0)) {
             okMatchesAudifonos.push_back(matchesAudifonos[i][0]);
         }
     }
-    for (int i = 0; i < matchesIphone.size(); ++i) {
-        if (matchesIphone[i][0].distance < ratio * matchesIphone[i][1].distance) {
-            okMatchesIphone.push_back(matchesIphone[i][0]);
+
+    for (int i = 0; i < min(descriptorsVideo.rows - 1, (int) matchesIphone.size()); ++i) {
+        if ((matchesIphone[i][0].distance < ratio * (matchesIphone[i][1].distance)) and
+            ((int) matchesIphone[i].size() <= 2 and (int) matchesIphone[i].size() > 0)) {
+            okMatchesAudifonos.push_back(matchesIphone[i][0]);
         }
     }
 
