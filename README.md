@@ -14,8 +14,8 @@
 
 ---
 ### System:
-<img alt="Lubuntu Logo" src="https://ubunlog.com/wp-content/uploads/2017/02/lubuntu.jpg" />
-<img alt="Mac Logo" src="https://i.pinimg.com/originals/8e/fd/cf/8efdcf3106de0b15d3374f96d0af5246.png" />
+<img alt="Lubuntu Logo" width="150px" src="https://ubunlog.com/wp-content/uploads/2017/02/lubuntu.jpg" />
+<img alt="Mac Logo"  width="150px" src="https://i.pinimg.com/originals/8e/fd/cf/8efdcf3106de0b15d3374f96d0af5246.png" />
 <br />
 
 ---
