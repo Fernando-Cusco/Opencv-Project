@@ -66,3 +66,21 @@ Brute-Force matcher is simple. It takes the descriptor of one feature in first s
 Image moments are a weighted average of image pixel intensities.
 #### Medianeblur
 The function smoothes an image using the median filter with the  aperture. Each channel of a multi-channel image is processed independently. In-place operation is supported.
+## Running of the Application ⚙️
+
+### Doing to Test end-to-end 🔩
+
+## Channel- Youtube 📖
+
+You can find much more about how to use this project in our video [Video-Youtube](https://youtu.be/qvLOYSiZnyE)
+
+## Author ✒️
+
+* **Ruben Abad** - *Developer 1* - [My person](https://www.facebook.com/rubaldo.labasca.5)
+* **Fernando Cusco** - *Developer 2* - [ClassMates](https://www.facebook.com/fernando.cuscomejia)
+
+## Teacher ✒️
+
+* **Vladimir Robles**  (https://github.com/vlarobbyk)
+## Expressions of gratitude 🎁
+
