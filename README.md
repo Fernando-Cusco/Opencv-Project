@@ -46,3 +46,9 @@ Helps us to draw the matches. It stacks two images horizontally and draw lines f
 
 #### Surf:
 OpenCV provides SURF functionalities just like SIFT. You initiate a SURF object with some optional conditions like 64/128-dim descriptors, Upright/Normal SURF etc. All the details are well explained in docs. Then as we did in SIFT, we can use SURF.detect(), SURF.compute() etc for finding keypoints and descriptors.
+#### BFMarcher:
+Brute-Force matcher is simple. It takes the descriptor of one feature in first set and is matched with all other features in second set using some distance calculation.
+#### Hu momnets:
+Image moments are a weighted average of image pixel intensities.
+#### Medianeblur
+The function smoothes an image using the median filter with the  aperture. Each channel of a multi-channel image is processed independently. In-place operation is supported.
