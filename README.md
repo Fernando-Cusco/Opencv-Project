@@ -13,6 +13,12 @@
 <br />
 
 ---
+### System:
+[Aquí la descripción de la imagen por si no carga](https://ubunlog.com/wp-content/uploads/2017/02/lubuntu.jpg)
+
+<br />
+
+---
 <img align="left" alt="RubenABAD25's Github Stats" src="https://github-readme-stats.vercel.app/api?username=RubenABAD25&show_icons=true&hide_border=true" />
 <img align="left" alt="Fernando-Cusco's Github Stats" src="https://github-readme-stats.vercel.app/api?username=Fernando-Cusco&show_icons=true&hide_border=true" />
 
