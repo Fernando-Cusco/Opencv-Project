@@ -37,5 +37,18 @@ This outputs 0≤L≤100, −127≤a≤127, −127≤b≤127 . The values are th
 •	8-bit images: L←L∗255/100,a←a+128,b←b+128
 •	16-bit images: (currently not supported)
 •	32-bit images: L, a, and b are left as is
+---
+
+#### CLAHE (Contrast Limited Adaptive Histogram Equalization):
+So to solve this problem, adaptive histogram equalization is used. In this, image is divided into small blocks called "tiles" (tileSize is 8x8 by default in OpenCV). Then each of these blocks are histogram equalized as usual. So in a small area, histogram would confine to a small region (unless there is noise). If noise is there, it will be amplified. To avoid this, contrast limiting is applied. If any histogram bin is above the specified contrast limit (by default 40 in OpenCV), those pixels are clipped and distributed uniformly to other bins before applying histogram equalization.
+---
+
+#### Matche:
+helps us to draw the matches. It stacks two images horizontally and draw lines from first image to second image showing best matches.
+----
+#### Surf:
+OpenCV provides SURF functionalities just like SIFT. You initiate a SURF object with some optional conditions like 64/128-dim descriptors, Upright/Normal SURF etc. All the details are well explained in docs. Then as we did in SIFT, we can use SURF.detect(), SURF.compute() etc for finding keypoints and descriptors.
+---
+
 
 
