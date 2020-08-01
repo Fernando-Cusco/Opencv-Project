@@ -14,7 +14,7 @@
 
 ---
 ### System:
-[Aquí la descripción de la imagen por si no carga](https://ubunlog.com/wp-content/uploads/2017/02/lubuntu.jpg)
+<img align="left" alt="Lubuntu Logo" width="26px" src="https://ubunlog.com/wp-content/uploads/2017/02/lubuntu.jpg" />
 
 <br />
 
