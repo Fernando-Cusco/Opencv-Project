@@ -19,7 +19,7 @@ sudo apt install build-essential cmake git pkg-config libgtk-3-dev \
     gfortran openexr libatlas-base-dev python3-dev python3-numpy \
     libtbb2 libtbb-dev libdc1394-22-dev
 
-![Aquí la descripción de la imagen por si no carga] align="left" (https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/ISO_C%2B%2B_Logo.svg/306px-ISO_C%2B%2B_Logo.svg.png)
+![Aquí la descripción de la imagen por si no carga](https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/ISO_C%2B%2B_Logo.svg/306px-ISO_C%2B%2B_Logo.svg.png)
 
 ### You need to install   🔧
 
