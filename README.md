@@ -11,6 +11,20 @@ In this application is doing to recognition objects.
 - 👯 I’m looking to collaborate with other content creators
 - 🥅 2020 Goals: Contribute more to Open Source projects
 
+### Pre-requirements 📋
+Install the required dependencies:
+sudo apt install build-essential cmake git pkg-config libgtk-3-dev \
+    libavcodec-dev libavformat-dev libswscale-dev libv4l-dev \
+    libxvidcore-dev libx264-dev libjpeg-dev libpng-dev libtiff-dev \
+    gfortran openexr libatlas-base-dev python3-dev python3-numpy \
+    libtbb2 libtbb-dev libdc1394-22-dev
+
+![Aquí la descripción de la imagen por si no carga] align="left" (https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/ISO_C%2B%2B_Logo.svg/306px-ISO_C%2B%2B_Logo.svg.png)
+
+### You need to install   🔧
+
+https://linuxize.com/post/how-to-install-opencv-on-ubuntu-18-04/
+
 ### Languages and Tools:
 <img align="left" alt="C++" width="35px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/ISO_C%2B%2B_Logo.svg/306px-ISO_C%2B%2B_Logo.svg.png" />
 <img align="left" alt="CLion"  width="35px" src="https://cdn.worldvectorlogo.com/logos/clion-1.svg" />
