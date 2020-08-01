@@ -21,7 +21,7 @@ In this application is doing to recognition objects.
 <img align="left" alt="Mac Logo"  width="80px" src="https://i.pinimg.com/originals/8e/fd/cf/8efdcf3106de0b15d3374f96d0af5246.png" />
 </br>
 </br>
----
+
 
 ### Git Stats:
 <img  alt="Fernando-Cusco's Github Stats" src="https://github-readme-stats.vercel.app/api?username=Fernando-Cusco&show_icons=true&hide_border=true" />
