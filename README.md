@@ -1,3 +1,8 @@
+![Aquí la descripción de la imagen por si no carga](https://www.ups.edu.ec/ups_portal-theme/images/ups/home/logo-ups-home.png)
+# Opencv-Project
+Project Intercycle IA2
+# Application developed in C++
+In this application is doing to recognition objects.
 ### Hi there, We are Fernando Cusco and Ruben Abad👋
 ## We are  a Students, Classmates and Developer!
 - 🔭 I’m currently working on a Text editor
