@@ -11,7 +11,6 @@
 [<img align="left" alt="CLion" width="26px" src="https://cdn.worldvectorlogo.com/logos/clion-1.svg" />]
 [<img align="left" alt="Text Editor" width="26px" src="https://thumbs.dreamstime.com/b/text-editor-isolated-icon-simple-element-illustration-technology-concept-icons-editable-logo-sign-symbol-design-white-142287610.jpg" />]
 <br />
-<br />
 
 ---
 <img align="left" alt="RubenABAD25's Github Stats" src="https://github-readme-stats.vercel.app/api?username=RubenABAD25&show_icons=true&hide_border=true" />
