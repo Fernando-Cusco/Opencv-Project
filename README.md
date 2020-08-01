@@ -15,6 +15,9 @@ In this application is doing to recognition objects.
 [<img align="left" alt="C++" width="26px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/ISO_C%2B%2B_Logo.svg/306px-ISO_C%2B%2B_Logo.svg.png" />]
 [<img align="left" alt="CLion" width="26px" src="https://cdn.worldvectorlogo.com/logos/clion-1.svg" />]
 [<img align="left" alt="Text Editor" width="26px" src="https://thumbs.dreamstime.com/b/text-editor-isolated-icon-simple-element-illustration-technology-concept-icons-editable-logo-sign-symbol-design-white-142287610.jpg" />]
+</br>
+</br>
+</br>
 
 ### System:
 <img align="left" alt="Lubuntu Logo" width="150px" src="https://ubunlog.com/wp-content/uploads/2017/02/lubuntu.jpg" />
