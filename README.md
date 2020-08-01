@@ -1,4 +1,4 @@
-### Hi there, We are Fernando Cusco and Ruben Abad - visit [Opencv-Project][website] 👋
+### Hi there, We are Fernando Cusco and Ruben Abad👋
 ## We are  a Students, Classmates and Developer!
 - 🔭 I’m currently working on a Text editor
 - 🔭 He is currently working on a CLion
