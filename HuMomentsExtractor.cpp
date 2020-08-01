@@ -1,11 +1,10 @@
 #include "HuMomentsExtractor.hpp"
-
-
-
+#include "SurfExtractor.hpp"
 
 void changeMode(int v, void *p) {
     cout << v << endl;
 }
+
 HuMomentsExtractor::HuMomentsExtractor(string outDir) {
     this->outDir = outDir;
     this->operationMode = 1;
@@ -15,6 +14,7 @@ HuMomentsExtractor::HuMomentsExtractor(string outDir) {
     this->aMin = 255;
     this->bMin = 255;
     this->lMin = 255;
+
 
 }
 
@@ -147,44 +147,79 @@ void HuMomentsExtractor::capture() {
 
 
         int indexVerde = -1;
-        int indexAmarillo = -1;
-        int indexTomate = -1;
-
+        int indexRojo = -1;
+        int indexMorado = -1;
+        SurfExtractor *surf = new SurfExtractor();
         while (true) {
             video >> frame;
-//            flip(frame, frame, 1);
             resize(frame, frame, Size(640, 480));
-
-            if (this->operationMode == 1) { // In this mode you can use the trackbars to determine the LAB segmentation range
+            if (this->operationMode ==
+                1) { // In this mode you can use the trackbars to determine the LAB segmentation range
                 huMoments = this->extractHuMoments(frame);
-            } if (this->operationMode == 2) { // In this mode you can use test the values selected to perform the segmentation and Hu Moments extraction
-                huMoments = this->extractHuMoments(frame, 0, 0, 0, 255, 106, 255);
-                indexVerde = this->euclideanDistance(huMoments, 2);
-                if (indexVerde != -1) {
-                    cout << "JoyStick: " << indexVerde << endl;
-                    putText(frame, "JoyStick", Point(huMoments[7], huMoments[8]), FONT_HERSHEY_DUPLEX, 1,
-                            Scalar(0, 10, 143), 2);
-                } else {
-                    huMoments = this->extractHuMoments(frame, 0, 165, 0, 255, 255, 255);
-                    indexAmarillo = this->euclideanDistance(huMoments, 1);
-                    if (indexAmarillo != -1) {
-                        cout << "Rojo: " << indexAmarillo << endl;
-                        putText(frame, "Rojo", Point(huMoments[7], huMoments[8]),
-                                FONT_HERSHEY_DUPLEX, 1, Scalar(143, 10, 0), 2);
-                    } else {
-                        //0-255-136-255-158-255
-                        huMoments = this->extractHuMoments(frame, 0, 146, 0, 255, 255, 88);
-                        indexTomate = this->euclideanDistance(huMoments, 0);
-                        if (indexTomate != -1) {
-                            cout << "Morado: " << indexTomate << endl;
-                            putText(frame, "Morado: ", Point(huMoments[7], huMoments[8]),
-                                    FONT_HERSHEY_DUPLEX, 1, Scalar(10, 143, 3), 2);
-                        }
-                    }
-                }
             }
-            if(this->operationMode == 3) {
-                cout << "Modo 3" << endl;
+            if (this->operationMode ==
+                2) { // In this mode you can use test the values selected to perform the segmentation and Hu Moments extraction
+                huMomentsPurple = this->extractHuMoments(frame, 0, 0, 0, 207, 173, 102);
+                huMomentsRed = this->extractHuMoments(frame, 0, 165, 0, 255, 255, 255);
+                huMomentsGreen = this->extractHuMoments(frame, 0, 0, 0, 255, 106, 255);
+                indexMorado = this->euclideanDistance(huMomentsPurple, 0);
+                indexRojo = this->euclideanDistance(huMomentsRed, 1);
+                indexVerde = this->euclideanDistance(huMomentsGreen, 2);
+
+                if (indexMorado != -1 and indexRojo != -1 and indexVerde != -1) {
+                    cout << "Morado: " << indexMorado << endl;
+                    putText(frame, "Morado: ", Point(huMomentsPurple[7], huMomentsPurple[8]),
+                            FONT_HERSHEY_DUPLEX, 1, Scalar(10, 143, 3), 2);
+                    cout << "Rojo: " << indexRojo << endl;
+                    putText(frame, "Rojo", Point(huMomentsRed[7], huMomentsRed[8]),
+                            FONT_HERSHEY_DUPLEX, 1, Scalar(143, 10, 0), 2);
+                    cout << "JoyStick: " << indexVerde << endl;
+                    putText(frame, "JoyStick", Point(huMomentsGreen[7], huMomentsGreen[8]), FONT_HERSHEY_DUPLEX,
+                            1,
+                            Scalar(0, 10, 143), 2);
+                }
+                if (indexMorado != -1 and indexRojo != -1) {
+                    cout << "Morado: " << indexMorado << endl;
+                    putText(frame, "Morado: ", Point(huMomentsPurple[7], huMomentsPurple[8]),
+                            FONT_HERSHEY_DUPLEX, 1, Scalar(10, 143, 3), 2);
+                    cout << "Rojo: " << indexRojo << endl;
+                    putText(frame, "Rojo", Point(huMomentsRed[7], huMomentsRed[8]),
+                            FONT_HERSHEY_DUPLEX, 1, Scalar(143, 10, 0), 2);
+                }
+
+                if (indexMorado != -1 and indexVerde != -1) {
+                    cout << "Morado: " << indexMorado << endl;
+                    putText(frame, "Morado: ", Point(huMomentsPurple[7], huMomentsPurple[8]),
+                            FONT_HERSHEY_DUPLEX, 1, Scalar(10, 143, 3), 2);
+                    cout << "Verde: " << indexVerde << endl;
+                    putText(frame, "JoyStick", Point(huMomentsGreen[7], huMomentsGreen[8]), FONT_HERSHEY_DUPLEX,
+                            1,
+                            Scalar(0, 10, 143), 2);
+                }
+
+                if (indexRojo != -1 and indexVerde != -1) {
+                    cout << "Rojo: " << indexRojo << endl;
+                    putText(frame, "Rojo", Point(huMomentsRed[7], huMomentsRed[8]),
+                            FONT_HERSHEY_DUPLEX, 1, Scalar(143, 10, 0), 2);
+                    cout << "Verde: " << indexVerde << endl;
+                    putText(frame, "JoyStick", Point(huMomentsGreen[7], huMomentsGreen[8]), FONT_HERSHEY_DUPLEX,
+                            1,
+                            Scalar(0, 10, 143), 2);
+                }
+
+            }
+            if (this->operationMode == 3) {
+                if (surf->estado == 0) {
+                    surf->readImage();
+                    surf->convertColorToGrayScale();
+                    surf->estado = 1;
+                } else {
+                    cvtColor(frame, surf->captura, COLOR_BGR2GRAY);
+                    surf->detectAndCompute(surf->captura);
+                    surf->makeMatches();
+                    surf->paintMatches(frame);
+                    surf->clearVectors();
+                }
             }
             imshow("video", frame);
 
@@ -194,5 +229,6 @@ void HuMomentsExtractor::capture() {
                 break;
         }
     }
+
     destroyAllWindows();
 }
