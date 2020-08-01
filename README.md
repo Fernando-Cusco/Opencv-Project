@@ -74,6 +74,8 @@ The function smoothes an image using the median filter with the  aperture. Each 
 
 You can find much more about how to use this project in our video [Video-Youtube](https://youtu.be/qvLOYSiZnyE)
 
+## Conclusion ✒️
+
 ## Author ✒️
 
 * **Ruben Abad** - *Developer 1* - [My person](https://www.facebook.com/rubaldo.labasca.5)
