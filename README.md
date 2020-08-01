@@ -14,9 +14,12 @@
 
 ---
 ### System:
-<img align="left" alt="Lubuntu Logo" src="https://ubunlog.com/wp-content/uploads/2017/02/lubuntu.jpg" />
-<img align="left" alt="Mac Logo" src="https://i.pinimg.com/originals/8e/fd/cf/8efdcf3106de0b15d3374f96d0af5246.png" />
+<img align="center" alt="Lubuntu Logo" src="https://ubunlog.com/wp-content/uploads/2017/02/lubuntu.jpg" />
+<img align="center" alt="Mac Logo" src="https://i.pinimg.com/originals/8e/fd/cf/8efdcf3106de0b15d3374f96d0af5246.png" />
 <br />
 
 ---
+### System:
 
+<img align="left" alt="Fernando-Cusco's Github Stats" src="https://github-readme-stats.vercel.app/api?username=Fernando-Cusco&show_icons=true&hide_border=true" />
+<img align="left" alt="RubenABAD25's Github Stats" src="https://github-readme-stats.vercel.app/api?username=RubenABAD25&show_icons=true&hide_border=true" />
