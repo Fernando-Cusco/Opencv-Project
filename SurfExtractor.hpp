@@ -68,7 +68,7 @@ public:
     void readImage();
     void convertColorToGrayScale();
     void detectAndCompute(Mat);
-    void makeMatches();
+    void makeMatches(Mat);
     void paintMatches(Mat);
     void clearVectors();
 

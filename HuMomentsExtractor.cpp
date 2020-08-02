@@ -150,9 +150,11 @@ void HuMomentsExtractor::capture() {
         int indexRojo = -1;
         int indexMorado = -1;
         SurfExtractor *surf = new SurfExtractor();
+
         while (true) {
             video >> frame;
             resize(frame, frame, Size(640, 480));
+            flip(frame, frame, 1);
             if (this->operationMode ==
                 1) { // In this mode you can use the trackbars to determine the LAB segmentation range
                 huMoments = this->extractHuMoments(frame);
@@ -216,7 +218,7 @@ void HuMomentsExtractor::capture() {
                 } else {
                     cvtColor(frame, surf->captura, COLOR_BGR2GRAY);
                     surf->detectAndCompute(surf->captura);
-                    surf->makeMatches();
+                    surf->makeMatches(frame);
                     surf->paintMatches(frame);
                     surf->clearVectors();
                 }
