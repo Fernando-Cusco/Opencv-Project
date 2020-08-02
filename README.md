@@ -2,7 +2,7 @@
 # Opencv-Project
 Final Project IA2
 # Application developed in C++
-In this application is doing to recognition objects.
+In this application is performing to recognition objects.
 ### Hi there, We are Fernando Cusco and Ruben Abad👋
 ## We are  a Students, Classmates and Developer!
 - 🔭 I’m currently working on a Text editor
@@ -44,7 +44,7 @@ https://linuxize.com/post/how-to-install-opencv-on-ubuntu-18-04/
 <img  alt="Fernando-Cusco's Github Stats" src="https://github-readme-stats.vercel.app/api?username=Fernando-Cusco&show_icons=true&hide_border=true" />
 <img  alt="RubenABAD25's Github Stats" src="https://github-readme-stats.vercel.app/api?username=RubenABAD25&show_icons=true&hide_border=true" />
 
-### Modules doing to use:
+### Modules utilized :
 #### COLOR_BGR2Lab:
 L* for the lightness from black (0) to white (100), a* from green (−) to red (+), and b* from blue (−) to yellow (+).
 This outputs 0≤L≤100, −127≤a≤127, −127≤b≤127 . The values are then converted to the destination data type:
@@ -55,8 +55,8 @@ This outputs 0≤L≤100, −127≤a≤127, −127≤b≤127 . The values are th
 #### CLAHE (Contrast Limited Adaptive Histogram Equalization):
 So to solve this problem, adaptive histogram equalization is used. In this, image is divided into small blocks called "tiles" (tileSize is 8x8 by default in OpenCV). Then each of these blocks are histogram equalized as usual. So in a small area, histogram would confine to a small region (unless there is noise). If noise is there, it will be amplified. To avoid this, contrast limiting is applied. If any histogram bin is above the specified contrast limit (by default 40 in OpenCV), those pixels are clipped and distributed uniformly to other bins before applying histogram equalization.
 
-#### Matche:
-Helps us to draw the matches. It stacks two images horizontally and draw lines from first image to second image showing best matches.
+#### Matches:
+Helps us to draw the matches. It stacks two images horizontally and draws the lines from the first image to second image showing, best matches.
 
 #### Surf:
 OpenCV provides SURF functionalities just like SIFT. You initiate a SURF object with some optional conditions like 64/128-dim descriptors, Upright/Normal SURF etc. All the details are well explained in docs. Then as we did in SIFT, we can use SURF.detect(), SURF.compute() etc for finding keypoints and descriptors.
@@ -75,6 +75,9 @@ The function smoothes an image using the median filter with the  aperture. Each 
 You can find much more about how to use this project in our video [Video-Youtube](https://youtu.be/qvLOYSiZnyE)
 
 ## Conclusion ✒️
+Overall, after working and implementing certain libraries, some of which are used for image processing and such as figures, colors and pixels and so on. In modern applications, since functionality is a key element, rapidly increasing demand for such tools such as:
+•	Facial Recognition
+•	Recognition and Identification based on categorization such as colors, shapes and so on.
 
 ## Author ✒️
 
