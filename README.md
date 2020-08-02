@@ -68,7 +68,7 @@ Image moments are a weighted average of image pixel intensities.
 The function smoothes an image using the median filter with the  aperture. Each channel of a multi-channel image is processed independently. In-place operation is supported.
 ## Running of the Application ⚙️
 
-### Doing to Test end-to-end 🔩
+### Doing to Testing end-to-end 🔩
 
 ## Channel- Youtube 📖
 
