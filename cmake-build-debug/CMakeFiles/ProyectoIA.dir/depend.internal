@@ -5,7 +5,10 @@ CMakeFiles/ProyectoIA.dir/HuMomentsExtractor.cpp.o
  /Users/fernandocuscomejia/Documents/Decimo/IA2/Vision-Computador/Opencv/ProyectoIA/HuMomentsExtractor.cpp
  /Users/fernandocuscomejia/Documents/Decimo/IA2/Vision-Computador/Opencv/ProyectoIA/HuMomentsExtractor.hpp
  /Users/fernandocuscomejia/Documents/Decimo/IA2/Vision-Computador/Opencv/ProyectoIA/SurfExtractor.hpp
+ /usr/local/Cellar/opencv/4.3.0_4/include/opencv4/opencv2/calib3d.hpp
+ /usr/local/Cellar/opencv/4.3.0_4/include/opencv4/opencv2/calib3d/calib3d.hpp
  /usr/local/Cellar/opencv/4.3.0_4/include/opencv4/opencv2/core.hpp
+ /usr/local/Cellar/opencv/4.3.0_4/include/opencv4/opencv2/core/affine.hpp
  /usr/local/Cellar/opencv/4.3.0_4/include/opencv4/opencv2/core/base.hpp
  /usr/local/Cellar/opencv/4.3.0_4/include/opencv4/opencv2/core/bufferpool.hpp
  /usr/local/Cellar/opencv/4.3.0_4/include/opencv4/opencv2/core/check.hpp
@@ -57,7 +60,10 @@ CMakeFiles/ProyectoIA.dir/HuMomentsExtractor.cpp.o
 CMakeFiles/ProyectoIA.dir/SurfExtractor.cpp.o
  /Users/fernandocuscomejia/Documents/Decimo/IA2/Vision-Computador/Opencv/ProyectoIA/SurfExtractor.cpp
  /Users/fernandocuscomejia/Documents/Decimo/IA2/Vision-Computador/Opencv/ProyectoIA/SurfExtractor.hpp
+ /usr/local/Cellar/opencv/4.3.0_4/include/opencv4/opencv2/calib3d.hpp
+ /usr/local/Cellar/opencv/4.3.0_4/include/opencv4/opencv2/calib3d/calib3d.hpp
  /usr/local/Cellar/opencv/4.3.0_4/include/opencv4/opencv2/core.hpp
+ /usr/local/Cellar/opencv/4.3.0_4/include/opencv4/opencv2/core/affine.hpp
  /usr/local/Cellar/opencv/4.3.0_4/include/opencv4/opencv2/core/base.hpp
  /usr/local/Cellar/opencv/4.3.0_4/include/opencv4/opencv2/core/bufferpool.hpp
  /usr/local/Cellar/opencv/4.3.0_4/include/opencv4/opencv2/core/check.hpp

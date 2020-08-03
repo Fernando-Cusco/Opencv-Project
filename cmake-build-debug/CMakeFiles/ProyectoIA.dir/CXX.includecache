@@ -44,10 +44,6 @@ opencv2/xfeatures2d/nonfree.hpp
 math.h
 -
 
-/Users/fernandocuscomejia/Documents/Decimo/IA2/Vision-Computador/Opencv/ProyectoIA/SurfExtractor.cpp
-SurfExtractor.hpp
-/Users/fernandocuscomejia/Documents/Decimo/IA2/Vision-Computador/Opencv/ProyectoIA/SurfExtractor.hpp
-
 /Users/fernandocuscomejia/Documents/Decimo/IA2/Vision-Computador/Opencv/ProyectoIA/SurfExtractor.hpp
 iostream
 -
@@ -79,8 +75,22 @@ opencv2/xfeatures2d/nonfree.hpp
 -
 opencv2/xfeatures2d.hpp
 -
+opencv2/calib3d/calib3d.hpp
+-
 math.h
 -
+
+/usr/local/Cellar/opencv/4.3.0_4/include/opencv4/opencv2/calib3d.hpp
+opencv2/core.hpp
+/usr/local/Cellar/opencv/4.3.0_4/include/opencv4/opencv2/opencv2/core.hpp
+opencv2/features2d.hpp
+/usr/local/Cellar/opencv/4.3.0_4/include/opencv4/opencv2/opencv2/features2d.hpp
+opencv2/core/affine.hpp
+/usr/local/Cellar/opencv/4.3.0_4/include/opencv4/opencv2/opencv2/core/affine.hpp
+
+/usr/local/Cellar/opencv/4.3.0_4/include/opencv4/opencv2/calib3d/calib3d.hpp
+opencv2/calib3d.hpp
+/usr/local/Cellar/opencv/4.3.0_4/include/opencv4/opencv2/calib3d/opencv2/calib3d.hpp
 
 /usr/local/Cellar/opencv/4.3.0_4/include/opencv4/opencv2/core.hpp
 opencv2/core/cvdef.h
@@ -111,6 +121,10 @@ opencv2/core/optim.hpp
 /usr/local/Cellar/opencv/4.3.0_4/include/opencv4/opencv2/opencv2/core/optim.hpp
 opencv2/core/ovx.hpp
 /usr/local/Cellar/opencv/4.3.0_4/include/opencv4/opencv2/opencv2/core/ovx.hpp
+
+/usr/local/Cellar/opencv/4.3.0_4/include/opencv4/opencv2/core/affine.hpp
+opencv2/core.hpp
+-
 
 /usr/local/Cellar/opencv/4.3.0_4/include/opencv4/opencv2/core/base.hpp
 opencv2/opencv_modules.hpp

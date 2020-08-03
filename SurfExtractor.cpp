@@ -5,107 +5,93 @@ SurfExtractor::SurfExtractor() {
 }
 
 void SurfExtractor::readImage() {
-    cara = imread("cara.png", IMREAD_GRAYSCALE);
-    iphone = imread("iphone.png", IMREAD_GRAYSCALE);
-    tarjeta = imread("tarjeta.png", IMREAD_GRAYSCALE);
+
+
 }
 
 void SurfExtractor::convertColorToGrayScale() {
 
-    medianBlur(tarjeta, tarjeta, 17);
-    medianBlur(cara, cara, 17);
-    medianBlur(iphone, iphone, 17);
-//    GaussianBlur(tarjeta, tarjeta, Size(3, 3), 2);
-//    GaussianBlur(cara, cara, Size(3, 3), 2);
-//    GaussianBlur(iphone, iphone, Size(3, 3), 2);
-    surf->detect(tarjeta, pointsTarjeta);
-    surf->detect(cara, pointsCara);
-    surf->detect(iphone, pointsIphone);
+//    medianBlur(tarjeta, tarjeta, 13);
+//    medianBlur(libro, libro, 13);
+//    medianBlur(iphone, iphone, 13);
 
-    surf->compute(tarjeta, pointsTarjeta, descriptorsTarjeta);
-    surf->compute(cara, pointsCara, descriptorsCara);
-    surf->compute(iphone, pointsIphone, descriptorsIphone);
+//    dilate(iphone, iphone, 3);
+//    dilate(libro, libro, 3);
+//    dilate(tarjeta, tarjeta, 3);
+//    erode(iphone, iphone, 0);
+//    erode(libro, libro, 0);
+//    erode(tarjeta, tarjeta, 0);
+
+
 }
 
-void SurfExtractor::detectAndCompute(Mat grisVideo) {
-//    GaussianBlur(grisVideo, grisVideo, Size(3, 3), 2);
-    medianBlur(grisVideo, grisVideo, 17);
-    surf->detect(grisVideo, pointsVideo);//para el video
-    surf->compute(grisVideo, pointsVideo, descriptorsVideo);
+void SurfExtractor::detectAndCompute() {
+//    medianBlur(grisVideo, grisVideo, 13);
+
+//    dilate(grisVideo, grisVideo, 3);
+//    erode(grisVideo, grisVideo, 0);
+//    medianBlur(grisVideo, grisVideo, 17);
+
 }
 
 void SurfExtractor::makeMatches(Mat frame) {
-    matcherTarjeta.knnMatch(descriptorsTarjeta, descriptorsVideo, matchesTarjeta, 2);
-    matcherCara.knnMatch(descriptorsCara, descriptorsVideo, matchesCara, 2);
-    matcherIphone.knnMatch(descriptorsIphone, descriptorsVideo, matchesIphone, 2);
+    libro = imread("logo.png", IMREAD_GRAYSCALE);
+    iphone = imread("disco.png", IMREAD_GRAYSCALE);
+    tarjeta = imread("tarjeta.png", IMREAD_GRAYSCALE);
+    GaussianBlur(tarjeta, tarjeta, Size(3, 3), 7);
+    GaussianBlur(libro, libro, Size(3, 3), 7);
+    GaussianBlur(iphone, iphone, Size(3, 3), 7);
 
-    float ratio = 0.8;
+    detector->detect(tarjeta, pointsTarjeta);
+    detector->detect(libro, pointsLibro);
+    detector->detect(iphone, pointsIphone);
 
-//    for(int i=0;i<matchesTarjeta.size();i++){
-//        if(matchesTarjeta[i][0].distance<ratio*matchesTarjeta[i][1].distance)
-//            okMatchesTarjeta.push_back(matchesTarjeta[i][0]);
-//    }
-//
-//    for(int i=0;i<matchesCara.size();i++){
-//        if(matchesCara[i][0].distance<ratio*matchesCara[i][1].distance)
-//            okMatchesCara.push_back(matchesCara[i][0]);
-//    }
-//
-//    for(int i=0;i<matchesIphone.size();i++){
-//        if(matchesIphone[i][0].distance<ratio*matchesIphone[i][1].distance)
-//            okMatchesIphone.push_back(matchesIphone[i][0]);
-//    }
+    extractor->compute(tarjeta, pointsTarjeta, descriptorsTarjeta);
+    extractor->compute(libro, pointsLibro, descriptorsLibro);
+    extractor->compute(iphone, pointsIphone, descriptorsIphone);
+    GaussianBlur(frame, frame, Size(3, 3), 7);
+    detector->detect(frame, pointsVideo);//para el video
+    extractor->compute(frame, pointsVideo, descriptorsVideo);
 
-    for (int i = 0; i < min(descriptorsVideo.rows - 1, (int) matchesTarjeta.size()); ++i) {
-        if ((matchesTarjeta[i][0].distance < ratio * (matchesTarjeta[i][1].distance)) and
-            ((int) matchesTarjeta[i].size() <= 2 and (int) matchesTarjeta[i].size() > 0)) {
+    Ptr<DescriptorMatcher> matcher = DescriptorMatcher::create(DescriptorMatcher::FLANNBASED);
+    matcher->knnMatch(descriptorsTarjeta, descriptorsVideo, matchesTarjeta, 2);
+    matcher->knnMatch(descriptorsLibro, descriptorsVideo, matchesLibro, 2);
+    matcher->knnMatch(descriptorsIphone, descriptorsVideo, matchesIphone, 2);
+
+    float ratio = 0.8f;
+
+    for (int i = 0; i < matchesTarjeta.size(); i++) {
+        if (matchesTarjeta[i][0].distance < ratio * matchesTarjeta[i][1].distance)
             okMatchesTarjeta.push_back(matchesTarjeta[i][0]);
-        }
     }
 
-    for (int i = 0; i < min(descriptorsVideo.rows - 1, (int) matchesCara.size()); ++i) {
-        if ((matchesCara[i][0].distance < ratio * (matchesCara[i][1].distance)) and
-            ((int) matchesCara[i].size() <= 2 and (int) matchesCara[i].size() > 0)) {
-            okMatchesCara.push_back(matchesCara[i][0]);
-        }
+    for (int i = 0; i < matchesLibro.size(); i++) {
+        if (matchesLibro[i][0].distance < ratio * matchesLibro[i][1].distance)
+            okMatchesLibro.push_back(matchesLibro[i][0]);
     }
 
-    for (int i = 0; i < min(descriptorsVideo.rows - 1, (int) matchesIphone.size()); ++i) {
-        if ((matchesIphone[i][0].distance < ratio * (matchesIphone[i][1].distance)) and
-            ((int) matchesIphone[i].size() <= 2 and (int) matchesIphone[i].size() > 0)) {
+    for (int i = 0; i < matchesIphone.size(); i++) {
+        if (matchesIphone[i][0].distance < ratio * matchesIphone[i][1].distance)
             okMatchesIphone.push_back(matchesIphone[i][0]);
-        }
     }
 
-    cout << "Matches: Tarjeta: " << okMatchesTarjeta.size() << " - Cara: " << okMatchesCara.size() << " - Iphone: " << okMatchesIphone.size() << endl;
-//    if (okMatchesTarjeta.size() >= 20 and okMatchesCara.size() >= 15 and okMatchesIphone.size() >= 19) {
-//        putText(frame, "Tarjeta - Cara - Iphone", Point(100, 100), FONT_HERSHEY_DUPLEX, 1,
-//                Scalar(255, 255, 255), 2);
-//    }
-//    if (okMatchesTarjeta.size() >= 20 and okMatchesCara.size() >= 15) {
-//        putText(frame, "Tarjeta - Cara", Point(100, 100), FONT_HERSHEY_DUPLEX, 1,
-//                Scalar(255, 255, 255), 2);
-//    }
-//    if (okMatchesCara.size() >= 15 and okMatchesIphone.size() >= 19) {
-//        putText(frame, "Cara - Iphone", Point(100, 100), FONT_HERSHEY_DUPLEX, 1,
-//                Scalar(255, 255, 255), 2);
-//    }
-//    if (okMatchesTarjeta.size() >= 20) {
+    cout << "Matches: Tarjeta: " << okMatchesTarjeta.size() << " - Logo: " << okMatchesLibro.size() << " - Disco Duro: " << okMatchesIphone.size() << endl;
+//    if (okMatchesTarjeta.size() >= 100) {
 //        putText(frame, "Tarjeta", Point(100, 100), FONT_HERSHEY_DUPLEX, 1,
 //                Scalar(255, 255, 255), 2);
 //    }
-//    if (okMatchesCara.size() >= 15) {
-//        putText(frame, "Cara", Point(100, 100), FONT_HERSHEY_DUPLEX, 1,
+//    if (okMatchesLibro.size() >= 140) {
+//        putText(frame, "Logo", Point(100, 100), FONT_HERSHEY_DUPLEX, 1,
 //                Scalar(255, 255, 255), 2);
 //    }
-//    if (okMatchesIphone.size() >= 19) {
-//        putText(frame, "Iphone", Point(100, 100), FONT_HERSHEY_DUPLEX, 1,
+//    if (okMatchesIphone.size() >= 600) {
+//        putText(frame, "Disco Duro", Point(100, 100), FONT_HERSHEY_DUPLEX, 1,
 //                Scalar(255, 255, 255), 2);
 //    }
 
 }
 
-void SurfExtractor::paintMatches(Mat video) {
+void SurfExtractor::paintMatches() {
 //    drawMatches(tarjeta, pointsTarjeta, video, pointsVideo, okMatchesTarjeta, img_matches);
 //    drawMatches(audifonos, pointsAudifonos, video, pointsVideo, okMatchesAudifonos, img_matches);
 //    drawMatches(iphone, pointsIphone, video, pointsVideo, okMatchesIphone, img_matches);
@@ -120,7 +106,7 @@ void SurfExtractor::paintMatches(Mat video) {
 
 void SurfExtractor::clearVectors() {
     okMatchesIphone.clear();
-    okMatchesCara.clear();
+    okMatchesLibro.clear();
     okMatchesTarjeta.clear();
 
 }

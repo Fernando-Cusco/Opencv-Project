@@ -149,7 +149,7 @@ void HuMomentsExtractor::capture() {
         int indexVerde = -1;
         int indexRojo = -1;
         int indexMorado = -1;
-        SurfExtractor *surf = new SurfExtractor();
+
 
         while (true) {
             video >> frame;
@@ -161,7 +161,7 @@ void HuMomentsExtractor::capture() {
             }
             if (this->operationMode ==
                 2) { // In this mode you can use test the values selected to perform the segmentation and Hu Moments extraction
-                huMomentsPurple = this->extractHuMoments(frame, 0, 0, 0, 207, 173, 102);
+                huMomentsPurple = this->extractHuMoments(frame, 75, 0, 0, 255, 255, 91);
                 huMomentsRed = this->extractHuMoments(frame, 0, 165, 0, 255, 255, 255);
                 huMomentsGreen = this->extractHuMoments(frame, 0, 0, 0, 255, 106, 255);
                 indexMorado = this->euclideanDistance(huMomentsPurple, 0);
@@ -211,17 +211,14 @@ void HuMomentsExtractor::capture() {
 
             }
             if (this->operationMode == 3) {
-                if (surf->estado == 0) {
-                    surf->readImage();
-                    surf->convertColorToGrayScale();
-                    surf->estado = 1;
-                } else {
-                    cvtColor(frame, surf->captura, COLOR_BGR2GRAY);
-                    surf->detectAndCompute(surf->captura);
-                    surf->makeMatches(frame);
-                    surf->paintMatches(frame);
-                    surf->clearVectors();
-                }
+                SurfExtractor *surf = new SurfExtractor();
+
+                cvtColor(frame, surf->captura, COLOR_BGR2GRAY);
+
+                surf->makeMatches(surf->captura);
+
+
+                delete surf;
             }
             imshow("video", frame);
 

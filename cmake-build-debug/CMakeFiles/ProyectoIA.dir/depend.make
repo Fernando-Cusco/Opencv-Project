@@ -4,7 +4,10 @@
 CMakeFiles/ProyectoIA.dir/HuMomentsExtractor.cpp.o: ../HuMomentsExtractor.cpp
 CMakeFiles/ProyectoIA.dir/HuMomentsExtractor.cpp.o: ../HuMomentsExtractor.hpp
 CMakeFiles/ProyectoIA.dir/HuMomentsExtractor.cpp.o: ../SurfExtractor.hpp
+CMakeFiles/ProyectoIA.dir/HuMomentsExtractor.cpp.o: /usr/local/Cellar/opencv/4.3.0_4/include/opencv4/opencv2/calib3d.hpp
+CMakeFiles/ProyectoIA.dir/HuMomentsExtractor.cpp.o: /usr/local/Cellar/opencv/4.3.0_4/include/opencv4/opencv2/calib3d/calib3d.hpp
 CMakeFiles/ProyectoIA.dir/HuMomentsExtractor.cpp.o: /usr/local/Cellar/opencv/4.3.0_4/include/opencv4/opencv2/core.hpp
+CMakeFiles/ProyectoIA.dir/HuMomentsExtractor.cpp.o: /usr/local/Cellar/opencv/4.3.0_4/include/opencv4/opencv2/core/affine.hpp
 CMakeFiles/ProyectoIA.dir/HuMomentsExtractor.cpp.o: /usr/local/Cellar/opencv/4.3.0_4/include/opencv4/opencv2/core/base.hpp
 CMakeFiles/ProyectoIA.dir/HuMomentsExtractor.cpp.o: /usr/local/Cellar/opencv/4.3.0_4/include/opencv4/opencv2/core/bufferpool.hpp
 CMakeFiles/ProyectoIA.dir/HuMomentsExtractor.cpp.o: /usr/local/Cellar/opencv/4.3.0_4/include/opencv4/opencv2/core/check.hpp
@@ -56,7 +59,10 @@ CMakeFiles/ProyectoIA.dir/HuMomentsExtractor.cpp.o: /usr/local/Cellar/opencv/4.3
 
 CMakeFiles/ProyectoIA.dir/SurfExtractor.cpp.o: ../SurfExtractor.cpp
 CMakeFiles/ProyectoIA.dir/SurfExtractor.cpp.o: ../SurfExtractor.hpp
+CMakeFiles/ProyectoIA.dir/SurfExtractor.cpp.o: /usr/local/Cellar/opencv/4.3.0_4/include/opencv4/opencv2/calib3d.hpp
+CMakeFiles/ProyectoIA.dir/SurfExtractor.cpp.o: /usr/local/Cellar/opencv/4.3.0_4/include/opencv4/opencv2/calib3d/calib3d.hpp
 CMakeFiles/ProyectoIA.dir/SurfExtractor.cpp.o: /usr/local/Cellar/opencv/4.3.0_4/include/opencv4/opencv2/core.hpp
+CMakeFiles/ProyectoIA.dir/SurfExtractor.cpp.o: /usr/local/Cellar/opencv/4.3.0_4/include/opencv4/opencv2/core/affine.hpp
 CMakeFiles/ProyectoIA.dir/SurfExtractor.cpp.o: /usr/local/Cellar/opencv/4.3.0_4/include/opencv4/opencv2/core/base.hpp
 CMakeFiles/ProyectoIA.dir/SurfExtractor.cpp.o: /usr/local/Cellar/opencv/4.3.0_4/include/opencv4/opencv2/core/bufferpool.hpp
 CMakeFiles/ProyectoIA.dir/SurfExtractor.cpp.o: /usr/local/Cellar/opencv/4.3.0_4/include/opencv4/opencv2/core/check.hpp

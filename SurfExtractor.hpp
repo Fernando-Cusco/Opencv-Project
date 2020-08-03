@@ -15,6 +15,7 @@
 #include <opencv2/videoio/videoio.hpp>
 #include <opencv2/xfeatures2d/nonfree.hpp>
 #include <opencv2/xfeatures2d.hpp>
+#include <opencv2/calib3d/calib3d.hpp>
 #include <math.h>
 
 using namespace std;
@@ -26,40 +27,41 @@ class SurfExtractor {
 public:
     int estado =  0;
     Mat iphone;
-    Mat cara;
+    Mat libro;
     Mat tarjeta;
 
 
     Mat iphoneGris;
-    Mat caraGris;
+    Mat libroGris;
     Mat tarjetaGris;
 
     Mat imagenBase;
     Mat captura;
 
     Ptr<Feature2D> surf = xfeatures2d::SURF::create();
+    Ptr<FeatureDetector> detector =  xfeatures2d::SurfFeatureDetector::create();
+    Ptr<DescriptorExtractor> extractor = xfeatures2d::SurfDescriptorExtractor::create();
     vector<KeyPoint> pointsVideo;  //para el video
     vector<KeyPoint> pointsTarjeta;
-    vector<KeyPoint> pointsCara;
+    vector<KeyPoint> pointsLibro;
     vector<KeyPoint> pointsIphone;
 
     Mat descriptorsVideo;           //para el video
-
     Mat descriptorsTarjeta;
-    Mat descriptorsCara;
+    Mat descriptorsLibro;
     Mat descriptorsIphone;
 
     BFMatcher matcherTarjeta;
-    BFMatcher matcherCara;
+    BFMatcher matcherLibro;
     BFMatcher matcherIphone;
 
     Mat img_matches;
     vector<vector<DMatch>> matchesTarjeta;
-    vector<vector<DMatch>> matchesCara;
+    vector<vector<DMatch>> matchesLibro;
     vector<vector<DMatch>> matchesIphone;
 
     vector<DMatch> okMatchesTarjeta;
-    vector<DMatch> okMatchesCara;
+    vector<DMatch> okMatchesLibro;
     vector<DMatch> okMatchesIphone;
 
 
@@ -67,9 +69,9 @@ public:
     SurfExtractor();
     void readImage();
     void convertColorToGrayScale();
-    void detectAndCompute(Mat);
+    void detectAndCompute();
     void makeMatches(Mat);
-    void paintMatches(Mat);
+    void paintMatches();
     void clearVectors();
 
 
