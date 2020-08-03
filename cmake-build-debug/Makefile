@@ -143,6 +143,33 @@ ProyectoIA/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProyectoIA.dir/build.make CMakeFiles/ProyectoIA.dir/build
 .PHONY : ProyectoIA/fast
 
+Effects.o: Effects.cpp.o
+
+.PHONY : Effects.o
+
+# target to build an object file
+Effects.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProyectoIA.dir/build.make CMakeFiles/ProyectoIA.dir/Effects.cpp.o
+.PHONY : Effects.cpp.o
+
+Effects.i: Effects.cpp.i
+
+.PHONY : Effects.i
+
+# target to preprocess a source file
+Effects.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProyectoIA.dir/build.make CMakeFiles/ProyectoIA.dir/Effects.cpp.i
+.PHONY : Effects.cpp.i
+
+Effects.s: Effects.cpp.s
+
+.PHONY : Effects.s
+
+# target to generate assembly for a file
+Effects.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProyectoIA.dir/build.make CMakeFiles/ProyectoIA.dir/Effects.cpp.s
+.PHONY : Effects.cpp.s
+
 HuMomentsExtractor.o: HuMomentsExtractor.cpp.o
 
 .PHONY : HuMomentsExtractor.o
@@ -233,6 +260,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... ProyectoIA"
+	@echo "... Effects.o"
+	@echo "... Effects.i"
+	@echo "... Effects.s"
 	@echo "... HuMomentsExtractor.o"
 	@echo "... HuMomentsExtractor.i"
 	@echo "... HuMomentsExtractor.s"

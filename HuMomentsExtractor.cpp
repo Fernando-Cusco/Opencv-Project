@@ -1,8 +1,15 @@
 #include "HuMomentsExtractor.hpp"
 #include "SurfExtractor.hpp"
+#include "Effects.hpp"
+
+int efecto = 0;
 
 void changeMode(int v, void *p) {
-    cout << v << endl;
+    cout << "Modo actual: " << v << endl;
+}
+
+void modoEfectos(int v, void *p) {
+    cout << "Efecto actual: " << efecto << endl;
 }
 
 HuMomentsExtractor::HuMomentsExtractor(string outDir) {
@@ -124,6 +131,7 @@ void HuMomentsExtractor::setOperationMode(int m) {
 }
 
 void HuMomentsExtractor::capture() {
+
     VideoCapture video(0);
     if (video.isOpened()) {
 
@@ -142,15 +150,16 @@ void HuMomentsExtractor::capture() {
         createTrackbar("Lmax", "video", &lMax, 255, HuMomentsExtractor::huFunc, static_cast<void *>(this));
         createTrackbar("Amax", "video", &aMax, 255, HuMomentsExtractor::huFunc, static_cast<void *>(this));
         createTrackbar("Bmax", "video", &bMax, 255, HuMomentsExtractor::huFunc, static_cast<void *>(this));
-        createTrackbar("modo", "video", &this->operationMode, 3, changeMode);
+        createTrackbar("Modo", "video", &this->operationMode, 3, changeMode);
+        createTrackbar("Efectos", "video", &efecto, 4, modoEfectos);
         vector<double> huMoments;
 
 
         int indexVerde = -1;
         int indexRojo = -1;
         int indexMorado = -1;
-
-
+        int ant = 0;
+        Effects *effect = new Effects();
         while (true) {
             video >> frame;
             resize(frame, frame, Size(640, 480));
@@ -217,16 +226,41 @@ void HuMomentsExtractor::capture() {
 
                 surf->makeMatches(surf->captura);
 
-
                 delete surf;
             }
+
+            if (this->operationMode == 0) {
+
+                if (efecto == 1) {
+                    effect->effectMirror(frame);
+                    ant = efecto;
+                } else {
+                    destroyWindow("Espejo");
+                }
+                if (efecto == 2) {
+                    effect->effectPaint(frame);
+                } else {
+                    destroyWindow("Cartoon");
+                }
+                if (efecto == 3) {
+                    effect->effectOilPainting(frame);
+                } else {
+                    destroyWindow("Oil");
+                }
+
+
+            }
+
             imshow("video", frame);
 
             imshow("threshold", imageThreshold);
 
+
+
             if (waitKey(23) == 27)
                 break;
         }
+        delete effect;
     }
 
     destroyAllWindows();

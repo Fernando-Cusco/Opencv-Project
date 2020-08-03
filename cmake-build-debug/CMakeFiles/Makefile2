@@ -94,12 +94,12 @@ clean: CMakeFiles/ProyectoIA.dir/clean
 CMakeFiles/ProyectoIA.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProyectoIA.dir/build.make CMakeFiles/ProyectoIA.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProyectoIA.dir/build.make CMakeFiles/ProyectoIA.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/fernandocuscomejia/Documents/Decimo/IA2/Vision-Computador/Opencv/ProyectoIA/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4 "Built target ProyectoIA"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/fernandocuscomejia/Documents/Decimo/IA2/Vision-Computador/Opencv/ProyectoIA/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5 "Built target ProyectoIA"
 .PHONY : CMakeFiles/ProyectoIA.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/ProyectoIA.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/fernandocuscomejia/Documents/Decimo/IA2/Vision-Computador/Opencv/ProyectoIA/cmake-build-debug/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/fernandocuscomejia/Documents/Decimo/IA2/Vision-Computador/Opencv/ProyectoIA/cmake-build-debug/CMakeFiles 5
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/ProyectoIA.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/fernandocuscomejia/Documents/Decimo/IA2/Vision-Computador/Opencv/ProyectoIA/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/ProyectoIA.dir/rule

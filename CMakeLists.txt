@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
 project(ProyectoIA)
 find_package( OpenCV REQUIRED )
-add_executable(ProyectoIA main.cpp HuMomentsExtractor.cpp SurfExtractor.cpp)
+add_executable(ProyectoIA main.cpp HuMomentsExtractor.cpp SurfExtractor.cpp Effects.cpp)
 target_link_libraries( ProyectoIA ${OpenCV_LIBS} )

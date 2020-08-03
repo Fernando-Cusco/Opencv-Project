@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/ProyectoIA.dir/Effects.cpp.o"
   "CMakeFiles/ProyectoIA.dir/HuMomentsExtractor.cpp.o"
   "CMakeFiles/ProyectoIA.dir/SurfExtractor.cpp.o"
   "CMakeFiles/ProyectoIA.dir/main.cpp.o"

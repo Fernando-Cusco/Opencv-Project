@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/Users/fernandocuscomejia/Documents/Decimo/IA2/Vision-Computador/Opencv/ProyectoIA/Effects.cpp" "/Users/fernandocuscomejia/Documents/Decimo/IA2/Vision-Computador/Opencv/ProyectoIA/cmake-build-debug/CMakeFiles/ProyectoIA.dir/Effects.cpp.o"
   "/Users/fernandocuscomejia/Documents/Decimo/IA2/Vision-Computador/Opencv/ProyectoIA/HuMomentsExtractor.cpp" "/Users/fernandocuscomejia/Documents/Decimo/IA2/Vision-Computador/Opencv/ProyectoIA/cmake-build-debug/CMakeFiles/ProyectoIA.dir/HuMomentsExtractor.cpp.o"
   "/Users/fernandocuscomejia/Documents/Decimo/IA2/Vision-Computador/Opencv/ProyectoIA/SurfExtractor.cpp" "/Users/fernandocuscomejia/Documents/Decimo/IA2/Vision-Computador/Opencv/ProyectoIA/cmake-build-debug/CMakeFiles/ProyectoIA.dir/SurfExtractor.cpp.o"
   "/Users/fernandocuscomejia/Documents/Decimo/IA2/Vision-Computador/Opencv/ProyectoIA/main.cpp" "/Users/fernandocuscomejia/Documents/Decimo/IA2/Vision-Computador/Opencv/ProyectoIA/cmake-build-debug/CMakeFiles/ProyectoIA.dir/main.cpp.o"
