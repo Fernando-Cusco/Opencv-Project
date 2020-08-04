@@ -39,8 +39,6 @@ public:
     Mat captura;
 
     Ptr<Feature2D> surf = xfeatures2d::SURF::create();
-    Ptr<FeatureDetector> detector =  xfeatures2d::SurfFeatureDetector::create();
-    Ptr<DescriptorExtractor> extractor = xfeatures2d::SurfDescriptorExtractor::create();
     vector<KeyPoint> pointsVideo;  //para el video
     vector<KeyPoint> pointsTarjeta;
     vector<KeyPoint> pointsLogo;

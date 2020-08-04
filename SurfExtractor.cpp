@@ -16,13 +16,13 @@ void SurfExtractor::readImage() {
     GaussianBlur(logo, logo, Size(3, 3), 7);
     GaussianBlur(disco, disco, Size(3, 3), 7);
 
-    detector->detect(tarjeta, pointsTarjeta);
-    detector->detect(logo, pointsLogo);
-    detector->detect(disco, pointsDisco);
+    surf->detect(tarjeta, pointsTarjeta);
+    surf->detect(logo, pointsLogo);
+    surf->detect(disco, pointsDisco);
 
-    extractor->compute(tarjeta, pointsTarjeta, descriptorsTarjeta);
-    extractor->compute(logo, pointsLogo, descriptorsDisco);
-    extractor->compute(disco, pointsDisco, descriptorsDisco);
+    surf->compute(tarjeta, pointsTarjeta, descriptorsTarjeta);
+    surf->compute(logo, pointsLogo, descriptorsDisco);
+    surf->compute(disco, pointsDisco, descriptorsDisco);
 
 }
 
@@ -55,8 +55,8 @@ void SurfExtractor::makeMatches(Mat frame) {
 
     normalize(frame, frame, 0, 255, NORM_MINMAX);
     GaussianBlur(frame, frame, Size(3, 3), 7);
-    detector->detect(frame, pointsVideo);//para el video
-    extractor->compute(frame, pointsVideo, descriptorsVideo);
+    surf->detect(frame, pointsVideo);//para el video
+    surf->compute(frame, pointsVideo, descriptorsVideo);
 
     Ptr<DescriptorMatcher> matcher = DescriptorMatcher::create(DescriptorMatcher::FLANNBASED);
     matcher->knnMatch(descriptorsTarjeta, descriptorsVideo, matchesTarjeta, 2);
