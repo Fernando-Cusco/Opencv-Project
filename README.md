@@ -67,12 +67,25 @@ Image moments are a weighted average of image pixel intensities.
 #### Medianeblur
 The function smoothes an image using the median filter with the  aperture. Each channel of a multi-channel image is processed independently. In-place operation is supported.
 ## Running of the Application ⚙️
+Now we will perform the obejct recognition, first we'll(we will) do it one at a time, then two by two, and lastly, three at a time.
+First-Parte 
+https://youtu.be/nWOWZ8PrDbk
+the second part  is the channel of my classmate
+There are object:
+https://1drv.ms/u/s!AlKjyPe5xQHpl9sPKwyRsw--Hr3CWA?e=NOR6x6
 
 ### Doing to Testing end-to-end 🔩
+Now we will perform the obejct recognition, first we'll(we will) do it one at a time, then two by two, and lastly, three at a time.
+<img align="left" alt="Object 1" width="35px" src="https://github.com/Fernando-Cusco/Opencv-Project/blob/effects/cara.png" />
+<img align="left" alt="Object 2"  width="35px" src="https://github.com/Fernando-Cusco/Opencv-Project/blob/effects/disco.png" />
+<img align="left" alt="Object 3"  width="35px" src="https://github.com/Fernando-Cusco/Opencv-Project/blob/effects/libro.png" />
+<img align="left" alt="Object 4"  width="35px" src="https://github.com/Fernando-Cusco/Opencv-Project/blob/effects/logo.png" />
+</br>
+</br>
+</br>
 
 ## Channel- Youtube 📖
-
-You can find much more about how to use this project in our video [Video-Youtube](https://youtu.be/qvLOYSiZnyE)
+You can find much more about how to use this project in our video [Video-Youtube](https://www.youtube.com/channel/UCK1rfXnKaiFwcCF-wOnUA2g/videos?view_as=subscriber)
 
 ## Conclusion ✒️
 Overall, after working and implementing certain libraries, some of which are used for image processing and such as figures, colors and pixels and so on. In modern applications, since functionality is a key element, rapidly increasing demand for such tools such as:
