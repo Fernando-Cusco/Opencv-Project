@@ -76,6 +76,7 @@ https://1drv.ms/u/s!AlKjyPe5xQHpl9sPKwyRsw--Hr3CWA?e=NOR6x6
 
 ### Doing to Testing end-to-end 🔩
 Now we will perform the obejct recognition, first we'll(we will) do it one at a time, then two by two, and lastly, three at a time.
+</br>
 <img align="left" alt="Object 1" width="35px" src="https://github.com/Fernando-Cusco/Opencv-Project/blob/effects/cara.png" />
 <img align="left" alt="Object 2"  width="35px" src="https://github.com/Fernando-Cusco/Opencv-Project/blob/effects/disco.png" />
 <img align="left" alt="Object 3"  width="35px" src="https://github.com/Fernando-Cusco/Opencv-Project/blob/effects/libro.png" />
