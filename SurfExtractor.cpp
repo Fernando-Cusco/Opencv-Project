@@ -6,6 +6,23 @@ SurfExtractor::SurfExtractor() {
 
 void SurfExtractor::readImage() {
 
+    logo = imread("logo.png", IMREAD_GRAYSCALE);
+    disco = imread("disco.png", IMREAD_GRAYSCALE);
+    tarjeta = imread("tarjeta.png", IMREAD_GRAYSCALE);
+    normalize(logo, logo, 0, 255, NORM_MINMAX);
+    normalize(tarjeta, tarjeta, 0, 255, NORM_MINMAX);
+    normalize(disco, disco, 0, 255, NORM_MINMAX);
+    GaussianBlur(tarjeta, tarjeta, Size(3, 3), 7);
+    GaussianBlur(logo, logo, Size(3, 3), 7);
+    GaussianBlur(disco, disco, Size(3, 3), 7);
+
+    detector->detect(tarjeta, pointsTarjeta);
+    detector->detect(logo, pointsLogo);
+    detector->detect(disco, pointsDisco);
+
+    extractor->compute(tarjeta, pointsTarjeta, descriptorsTarjeta);
+    extractor->compute(logo, pointsLogo, descriptorsDisco);
+    extractor->compute(disco, pointsDisco, descriptorsDisco);
 
 }
 
@@ -35,47 +52,36 @@ void SurfExtractor::detectAndCompute() {
 }
 
 void SurfExtractor::makeMatches(Mat frame) {
-    libro = imread("logo.png", IMREAD_GRAYSCALE);
-    iphone = imread("disco.png", IMREAD_GRAYSCALE);
-    tarjeta = imread("tarjeta.png", IMREAD_GRAYSCALE);
-    GaussianBlur(tarjeta, tarjeta, Size(3, 3), 7);
-    GaussianBlur(libro, libro, Size(3, 3), 7);
-    GaussianBlur(iphone, iphone, Size(3, 3), 7);
 
-    detector->detect(tarjeta, pointsTarjeta);
-    detector->detect(libro, pointsLibro);
-    detector->detect(iphone, pointsIphone);
-
-    extractor->compute(tarjeta, pointsTarjeta, descriptorsTarjeta);
-    extractor->compute(libro, pointsLibro, descriptorsLibro);
-    extractor->compute(iphone, pointsIphone, descriptorsIphone);
+    normalize(frame, frame, 0, 255, NORM_MINMAX);
     GaussianBlur(frame, frame, Size(3, 3), 7);
     detector->detect(frame, pointsVideo);//para el video
     extractor->compute(frame, pointsVideo, descriptorsVideo);
 
     Ptr<DescriptorMatcher> matcher = DescriptorMatcher::create(DescriptorMatcher::FLANNBASED);
     matcher->knnMatch(descriptorsTarjeta, descriptorsVideo, matchesTarjeta, 2);
-    matcher->knnMatch(descriptorsLibro, descriptorsVideo, matchesLibro, 2);
-    matcher->knnMatch(descriptorsIphone, descriptorsVideo, matchesIphone, 2);
+    matcher->knnMatch(descriptorsLogo, descriptorsVideo, matchesLogo, 2);
+    matcher->knnMatch(descriptorsDisco, descriptorsVideo, matchesDisco, 2);
 
-    float ratio = 0.8f;
+    float ratio = 0.6f;
 
     for (int i = 0; i < matchesTarjeta.size(); i++) {
         if (matchesTarjeta[i][0].distance < ratio * matchesTarjeta[i][1].distance)
             okMatchesTarjeta.push_back(matchesTarjeta[i][0]);
     }
 
-    for (int i = 0; i < matchesLibro.size(); i++) {
-        if (matchesLibro[i][0].distance < ratio * matchesLibro[i][1].distance)
-            okMatchesLibro.push_back(matchesLibro[i][0]);
+    for (int i = 0; i < matchesLogo.size(); i++) {
+        if (matchesLogo[i][0].distance < ratio * matchesLogo[i][1].distance)
+            okMatchesLogo.push_back(matchesLogo[i][0]);
     }
 
-    for (int i = 0; i < matchesIphone.size(); i++) {
-        if (matchesIphone[i][0].distance < ratio * matchesIphone[i][1].distance)
-            okMatchesIphone.push_back(matchesIphone[i][0]);
+    for (int i = 0; i < matchesDisco.size(); i++) {
+        if (matchesDisco[i][0].distance < ratio * matchesDisco[i][1].distance)
+            okMatchesDisco.push_back(matchesDisco[i][0]);
     }
 
-    cout << "Matches: Tarjeta: " << okMatchesTarjeta.size() << " - Logo: " << okMatchesLibro.size() << " - Disco Duro: " << okMatchesIphone.size() << endl;
+    cout << "Matches: Tarjeta: " << okMatchesTarjeta.size() << " - Logo: " << okMatchesLogo.size() << " - Disco Duro: "
+         << okMatchesDisco.size() << endl;
 //    if (okMatchesTarjeta.size() >= 100) {
 //        putText(frame, "Tarjeta", Point(100, 100), FONT_HERSHEY_DUPLEX, 1,
 //                Scalar(255, 255, 255), 2);
@@ -105,9 +111,10 @@ void SurfExtractor::paintMatches() {
 }
 
 void SurfExtractor::clearVectors() {
-    okMatchesIphone.clear();
-    okMatchesLibro.clear();
     okMatchesTarjeta.clear();
+    okMatchesLogo.clear();
+    okMatchesDisco.clear();
+
 
 }
 

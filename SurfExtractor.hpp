@@ -26,8 +26,8 @@ class SurfExtractor {
 
 public:
     int estado =  0;
-    Mat iphone;
-    Mat libro;
+    Mat disco;
+    Mat logo;
     Mat tarjeta;
 
 
@@ -43,26 +43,27 @@ public:
     Ptr<DescriptorExtractor> extractor = xfeatures2d::SurfDescriptorExtractor::create();
     vector<KeyPoint> pointsVideo;  //para el video
     vector<KeyPoint> pointsTarjeta;
-    vector<KeyPoint> pointsLibro;
-    vector<KeyPoint> pointsIphone;
+    vector<KeyPoint> pointsLogo;
+    vector<KeyPoint> pointsDisco;
 
     Mat descriptorsVideo;           //para el video
     Mat descriptorsTarjeta;
-    Mat descriptorsLibro;
-    Mat descriptorsIphone;
+    Mat descriptorsLogo;
+    Mat descriptorsDisco;
 
     BFMatcher matcherTarjeta;
     BFMatcher matcherLibro;
     BFMatcher matcherIphone;
+    BFMatcher mct;
 
     Mat img_matches;
     vector<vector<DMatch>> matchesTarjeta;
-    vector<vector<DMatch>> matchesLibro;
-    vector<vector<DMatch>> matchesIphone;
+    vector<vector<DMatch>> matchesLogo;
+    vector<vector<DMatch>> matchesDisco;
 
     vector<DMatch> okMatchesTarjeta;
-    vector<DMatch> okMatchesLibro;
-    vector<DMatch> okMatchesIphone;
+    vector<DMatch> okMatchesLogo;
+    vector<DMatch> okMatchesDisco;
 
 
 

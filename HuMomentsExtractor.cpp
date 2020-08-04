@@ -2,6 +2,7 @@
 #include "SurfExtractor.hpp"
 #include "Effects.hpp"
 
+
 int efecto = 0;
 
 void changeMode(int v, void *p) {
@@ -36,8 +37,7 @@ Mat HuMomentsExtractor::applyClahe(Mat imgLab) {
     clahe->apply(canales[0], dst);
     dst.copyTo(canales[0]);
     merge(canales, imageClahe);
-//    cvtColor(imageLab, imageClahe, COLOR_Lab2BGR);
-//    imshow("video-clahe", imageClahe);
+
     return imageClahe;
 }
 
@@ -158,10 +158,13 @@ void HuMomentsExtractor::capture() {
         int indexVerde = -1;
         int indexRojo = -1;
         int indexMorado = -1;
-        int ant = 0;
+        int contador = 0;
         Effects *effect = new Effects();
+        SurfExtractor surf = SurfExtractor();
+
         while (true) {
             video >> frame;
+            normalize(frame, frame, 0, 255, NORM_MINMAX);
             resize(frame, frame, Size(640, 480));
             flip(frame, frame, 1);
             if (this->operationMode ==
@@ -179,10 +182,10 @@ void HuMomentsExtractor::capture() {
 
                 if (indexMorado != -1 and indexRojo != -1 and indexVerde != -1) {
                     cout << "Morado: " << indexMorado << endl;
-                    putText(frame, "Morado: ", Point(huMomentsPurple[7], huMomentsPurple[8]),
+                    putText(frame, "Cara Feliz: ", Point(huMomentsPurple[7], huMomentsPurple[8]),
                             FONT_HERSHEY_DUPLEX, 1, Scalar(10, 143, 3), 2);
                     cout << "Rojo: " << indexRojo << endl;
-                    putText(frame, "Rojo", Point(huMomentsRed[7], huMomentsRed[8]),
+                    putText(frame, "Carrito", Point(huMomentsRed[7], huMomentsRed[8]),
                             FONT_HERSHEY_DUPLEX, 1, Scalar(143, 10, 0), 2);
                     cout << "JoyStick: " << indexVerde << endl;
                     putText(frame, "JoyStick", Point(huMomentsGreen[7], huMomentsGreen[8]), FONT_HERSHEY_DUPLEX,
@@ -191,16 +194,16 @@ void HuMomentsExtractor::capture() {
                 }
                 if (indexMorado != -1 and indexRojo != -1) {
                     cout << "Morado: " << indexMorado << endl;
-                    putText(frame, "Morado: ", Point(huMomentsPurple[7], huMomentsPurple[8]),
+                    putText(frame, "Cara Feliz: ", Point(huMomentsPurple[7], huMomentsPurple[8]),
                             FONT_HERSHEY_DUPLEX, 1, Scalar(10, 143, 3), 2);
                     cout << "Rojo: " << indexRojo << endl;
-                    putText(frame, "Rojo", Point(huMomentsRed[7], huMomentsRed[8]),
+                    putText(frame, "Carrito", Point(huMomentsRed[7], huMomentsRed[8]),
                             FONT_HERSHEY_DUPLEX, 1, Scalar(143, 10, 0), 2);
                 }
 
                 if (indexMorado != -1 and indexVerde != -1) {
                     cout << "Morado: " << indexMorado << endl;
-                    putText(frame, "Morado: ", Point(huMomentsPurple[7], huMomentsPurple[8]),
+                    putText(frame, "Cara Feliz: ", Point(huMomentsPurple[7], huMomentsPurple[8]),
                             FONT_HERSHEY_DUPLEX, 1, Scalar(10, 143, 3), 2);
                     cout << "Verde: " << indexVerde << endl;
                     putText(frame, "JoyStick", Point(huMomentsGreen[7], huMomentsGreen[8]), FONT_HERSHEY_DUPLEX,
@@ -209,8 +212,8 @@ void HuMomentsExtractor::capture() {
                 }
 
                 if (indexRojo != -1 and indexVerde != -1) {
-                    cout << "Rojo: " << indexRojo << endl;
-                    putText(frame, "Rojo", Point(huMomentsRed[7], huMomentsRed[8]),
+                    cout << "rojo: " << indexRojo << endl;
+                    putText(frame, "Carrito", Point(huMomentsRed[7], huMomentsRed[8]),
                             FONT_HERSHEY_DUPLEX, 1, Scalar(143, 10, 0), 2);
                     cout << "Verde: " << indexVerde << endl;
                     putText(frame, "JoyStick", Point(huMomentsGreen[7], huMomentsGreen[8]), FONT_HERSHEY_DUPLEX,
@@ -220,20 +223,17 @@ void HuMomentsExtractor::capture() {
 
             }
             if (this->operationMode == 3) {
-                SurfExtractor *surf = new SurfExtractor();
 
-                cvtColor(frame, surf->captura, COLOR_BGR2GRAY);
+                surf.readImage();
+                cvtColor(frame, surf.captura, COLOR_BGR2GRAY);
+                surf.makeMatches(surf.captura);
+                surf.clearVectors();
+//                delete surf;
 
-                surf->makeMatches(surf->captura);
-
-                delete surf;
             }
-
             if (this->operationMode == 0) {
-
                 if (efecto == 1) {
                     effect->effectMirror(frame);
-                    ant = efecto;
                 } else {
                     destroyWindow("Espejo");
                 }
@@ -247,20 +247,17 @@ void HuMomentsExtractor::capture() {
                 } else {
                     destroyWindow("Oil");
                 }
-
-
             }
-
             imshow("video", frame);
 
             imshow("threshold", imageThreshold);
-
-
 
             if (waitKey(23) == 27)
                 break;
         }
         delete effect;
+
+
     }
 
     destroyAllWindows();
