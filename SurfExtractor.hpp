@@ -63,6 +63,20 @@ public:
     vector<DMatch> okMatchesLogo;
     vector<DMatch> okMatchesDisco;
 
+    Mat tarjetaCanny;
+    Mat logoCanny;
+    Mat discoCanny;
+    Mat contornosVideo;
+
+    vector<Vec4i> jerarquiaTarjeta;
+    vector<Vec4i> jerarquiaLogo;
+    vector<Vec4i> jerarquiaDisco;
+    vector<Vec4i> jerarquiaVideo;
+
+    vector<vector<Point> > contornosPuntosTarjeta;
+    vector<vector<Point> > contornosPuntosLogo;
+    vector<vector<Point> > contornosPuntosDisco;
+    vector<vector<Point> > contornosPuntosVideo;
 
 
     SurfExtractor();

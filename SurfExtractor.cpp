@@ -9,9 +9,11 @@ void SurfExtractor::readImage() {
     logo = imread("logo.png", IMREAD_GRAYSCALE);
     disco = imread("disco.png", IMREAD_GRAYSCALE);
     tarjeta = imread("tarjeta.png", IMREAD_GRAYSCALE);
+
     normalize(logo, logo, 0, 255, NORM_MINMAX);
     normalize(tarjeta, tarjeta, 0, 255, NORM_MINMAX);
     normalize(disco, disco, 0, 255, NORM_MINMAX);
+
     GaussianBlur(tarjeta, tarjeta, Size(3, 3), 7);
     GaussianBlur(logo, logo, Size(3, 3), 7);
     GaussianBlur(disco, disco, Size(3, 3), 7);
@@ -21,8 +23,19 @@ void SurfExtractor::readImage() {
     surf->detect(disco, pointsDisco);
 
     surf->compute(tarjeta, pointsTarjeta, descriptorsTarjeta);
-    surf->compute(logo, pointsLogo, descriptorsDisco);
+    surf->compute(logo, pointsLogo, descriptorsLogo);
     surf->compute(disco, pointsDisco, descriptorsDisco);
+
+    int _thres = 253;
+
+//    Canny(tarjeta, tarjetaCanny, _thres, _thres*2);
+//    findContours(tarjetaCanny, contornosPuntosTarjeta, jerarquiaTarjeta, 3, RETR_TREE);
+//
+//    Canny(logo, logoCanny, _thres, _thres*2);
+//    findContours(logoCanny, contornosPuntosLogo, jerarquiaLogo, 3, RETR_TREE);
+//
+//    Canny(disco, discoCanny, _thres, _thres*2);
+//    findContours(discoCanny, contornosPuntosDisco, jerarquiaDisco, 3, RETR_TREE);
 
 }
 
@@ -58,27 +71,58 @@ void SurfExtractor::makeMatches(Mat frame) {
     surf->detect(frame, pointsVideo);//para el video
     surf->compute(frame, pointsVideo, descriptorsVideo);
 
-    Ptr<DescriptorMatcher> matcher = DescriptorMatcher::create(DescriptorMatcher::FLANNBASED);
-    matcher->knnMatch(descriptorsTarjeta, descriptorsVideo, matchesTarjeta, 2);
-    matcher->knnMatch(descriptorsLogo, descriptorsVideo, matchesLogo, 2);
-    matcher->knnMatch(descriptorsDisco, descriptorsVideo, matchesDisco, 2);
+    Ptr<DescriptorMatcher> matcher = DescriptorMatcher::create(DescriptorMatcher::BRUTEFORCE);
+    mct.knnMatch(descriptorsTarjeta, descriptorsVideo, matchesTarjeta, 2);
+    mct.knnMatch(descriptorsLogo, descriptorsVideo, matchesLogo, 2);
+    mct.knnMatch(descriptorsDisco, descriptorsVideo, matchesDisco, 2);
 
-    float ratio = 0.6f;
+    float ratio = 0.8f;
 
-    for (int i = 0; i < matchesTarjeta.size(); i++) {
-        if (matchesTarjeta[i][0].distance < ratio * matchesTarjeta[i][1].distance)
+
+    for (int i = 0; i < min(descriptorsVideo.rows - 1, (int) matchesTarjeta.size()); ++i) {
+        if ((matchesTarjeta[i][0].distance < ratio * (matchesTarjeta[i][1].distance)) and
+            ((int) matchesTarjeta[i].size() <= 2 and (int) matchesTarjeta[i].size() > 0)) {
             okMatchesTarjeta.push_back(matchesTarjeta[i][0]);
+        }
     }
 
-    for (int i = 0; i < matchesLogo.size(); i++) {
-        if (matchesLogo[i][0].distance < ratio * matchesLogo[i][1].distance)
-            okMatchesLogo.push_back(matchesLogo[i][0]);
-    }
-
-    for (int i = 0; i < matchesDisco.size(); i++) {
-        if (matchesDisco[i][0].distance < ratio * matchesDisco[i][1].distance)
+    for (int i = 0; i < min(descriptorsVideo.rows - 1, (int) matchesDisco.size()); ++i) {
+        if ((matchesDisco[i][0].distance < ratio * (matchesDisco[i][1].distance)) and
+            ((int) matchesDisco[i].size() <= 2 and (int) matchesDisco[i].size() > 0)) {
             okMatchesDisco.push_back(matchesDisco[i][0]);
+        }
     }
+
+    for (int i = 0; i < min(descriptorsVideo.rows - 1, (int) matchesLogo.size()); ++i) {
+        if ((matchesLogo[i][0].distance < ratio * (matchesLogo[i][1].distance)) and
+            ((int) matchesLogo[i].size() <= 2 and (int) matchesLogo[i].size() > 0)) {
+            okMatchesLogo.push_back(matchesLogo[i][0]);
+        }
+    }
+
+//    int _thres = 253;
+//    Canny(frame, frame, _thres, _thres * 2);
+//    findContours(frame, contornosPuntosVideo, jerarquiaVideo, 3, RETR_TREE);
+//    contornosVideo = Mat::zeros(Size(frame.cols, frame.rows), CV_8UC1);
+//
+//    Moments hu;
+//    int cx = 0;
+//    int cy = 0;
+//    double area = 0;
+//    double max_area = 0;
+//    for (int i = 0; i < contornosPuntosDisco.size(); ++i) {
+//        area = contourArea(contornosPuntosDisco[i]);
+//        if (area > max_area) {
+//            max_area = area;
+//            hu = moments(contornosPuntosDisco[i]);
+//            if (hu.m00 > 0) {
+//                cx = hu.m10 / hu.m00;
+//                cy = hu.m01 / hu.m00;
+//            }
+//        }
+//    }
+//    circle(frame, Point(cx, cy), 10, Scalar(100, 100, 100), -1);
+
 
     cout << "Matches: Tarjeta: " << okMatchesTarjeta.size() << " - Logo: " << okMatchesLogo.size() << " - Disco Duro: "
          << okMatchesDisco.size() << endl;

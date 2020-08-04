@@ -160,8 +160,8 @@ void HuMomentsExtractor::capture() {
         int indexMorado = -1;
         int contador = 0;
         Effects *effect = new Effects();
-        SurfExtractor surf = SurfExtractor();
 
+        SurfExtractor *surf = new SurfExtractor();
         while (true) {
             video >> frame;
             normalize(frame, frame, 0, 255, NORM_MINMAX);
@@ -224,11 +224,15 @@ void HuMomentsExtractor::capture() {
             }
             if (this->operationMode == 3) {
 
-                surf.readImage();
-                cvtColor(frame, surf.captura, COLOR_BGR2GRAY);
-                surf.makeMatches(surf.captura);
-                surf.clearVectors();
-//                delete surf;
+                if(contador == 0) {
+                    surf->readImage();
+                    contador = 1;
+                } else {
+                    cvtColor(frame, surf->captura, COLOR_BGR2GRAY);
+                    surf->makeMatches(surf->captura);
+                    surf->clearVectors();
+                }
+
 
             }
             if (this->operationMode == 0) {
@@ -255,6 +259,7 @@ void HuMomentsExtractor::capture() {
             if (waitKey(23) == 27)
                 break;
         }
+        delete surf;
         delete effect;
 
 
